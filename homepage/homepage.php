@@ -75,7 +75,7 @@ session_start();
         <div class="flex space-x-4">
             <a href="homepage.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">HOME</a>
             <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">SHOP</a>
-            <a href="collection.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">COLLECTION</a>
+            <!-- <a href="collection.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">COLLECTION</a> -->
             <a href="wishlist.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">WISHLIST</a>
             <a href="contact.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">CONTACT</a>
         </div>
@@ -104,7 +104,7 @@ session_start();
                 Discover the latest trends this Black Friday! <br class="hidden md:block">
                 Unbeatable deals on stylish clothing for the whole family.
             </p>
-            <button class="bg-yellow-500 text-white px-6 py-2 mt-6 rounded hover:scale-105">SHOP NOW</button>
+            <button class="bg-yellow-500 text-white px-6 py-2 mt-6 rounded hover:scale-105"><a href="/FULLSTACK_PROJECT/shop/shop.php">SHOP NOW</a></button>
         </div>
         <!-- Right: Image with Sale Badge -->
 <div class="w-full md:w-1/2 relative">

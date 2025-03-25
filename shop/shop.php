@@ -26,9 +26,9 @@ $result = $conn->query($sql);
     <nav class="bg-black text-white">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex space-x-4">
-                <a href="homepage.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">HOME</a>
+                <a href="/FULLSTACK_PROJECT/homepage/homepage.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">HOME</a>
                 <a href="shop.php" class="px-3 py-2 block bg-yellow-500 rounded">SHOP</a>
-                <a href="collection.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">COLLECTION</a>
+                <!-- <a href="collection.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">COLLECTION</a> -->
                 <a href="wishlist.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">WISHLIST</a>
                 <a href="contact.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">CONTACT</a>
             </div>
