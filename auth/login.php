@@ -18,7 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $hashed_password)) {
             session_start();
             $_SESSION["user_id"] = $id;
-            echo "Login Successful! <a href='dashboard.php'>Go to Dashboard</a>";
+            $_SESSION["username"] = $email;
+            header("Location: /FULLSTACK_PROJECT/homepage/homepage.php");
+            exit();
         } else {
             echo "Invalid password!";
         }

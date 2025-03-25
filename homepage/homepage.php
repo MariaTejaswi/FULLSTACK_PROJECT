@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +83,7 @@
         <!-- Right: Conditional Login/Logout -->
         <div>
             <?php if (isset($_SESSION['user_id'])): ?>
-                <span class="text-yellow-500">Welcome, <?php echo htmlspecialchars($username); ?></span>
+                <span class="text-yellow-500">Welcome, <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></span>
                 <a href="logout.php" class="px-3 py-2 ml-4 bg-red-500 text-white rounded">LOGOUT</a>
             <?php else: ?>
                 <a href="/FULLSTACK_PROJECT/auth/login.html" class="px-3 py-2 bg-yellow-500 text-white rounded">LOGIN / SIGN UP</a>
