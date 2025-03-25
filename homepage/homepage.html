@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashi </title>
+    <title>FashionHub</title>
     <!-- Local Tailwind CSS -->
-    <link rel="stylesheet" href="/src/output.css">
+    <link rel="stylesheet" href="/FULLSTACK_PROJECT/src/output.css">
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
 </head>
 <body class="font-sans">
     <!-- Top Bar -->
@@ -64,29 +64,30 @@
     </header>
 
     <!-- Navigation -->
-    <nav class="bg-black text-white">
-        <div class="max-w-7xl mx-auto px-4 py-3">
-            <!-- Mobile Menu Toggle -->
-            <div class="flex justify-between items-center md:hidden">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-bars"></i>
-                    <span>ALL DEPARTMENTS</span>
-                </div>
-                <button id="menu-toggle" class="text-white">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-            <!-- Menu Items -->
-            <div id="menu" class="hidden md:flex md:items-center md:space-x-4 flex-col md:flex-row">
-                <a href="#" class="px-3 py-2 md:py-1 block md:inline hover:bg-yellow-500 rounded">HOME</a>
-                <a href="#" class="px-3 py-2 md:py-1 block md:inline hover:bg-yellow-500 rounded">SHOP</a>
-                <a href="#" class="px-3 py-2 md:py-1 block md:inline hover:bg-yellow-500 rounded">COLLECTION</a>
-                <a href="#" class="px-3 py-2 md:py-1 block md:inline hover:bg-yellow-500 rounded">WISHLIST</a>
-                <a href="#" class="px-3 py-2 md:py-1 block md:inline hover:bg-yellow-500 rounded">CONTACT</a>
-                <a href="#" class="px-3 py-2 md:py-1 block md:inline hover:bg-yellow-500 rounded">LOGIN/ SIGN UP</a>
-            </div>
+    <!-- Navigation -->
+<nav class="bg-black text-white">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Left: Menu Items -->
+        <div class="flex space-x-4">
+            <a href="index.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">HOME</a>
+            <a href="shop.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">SHOP</a>
+            <a href="collection.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">COLLECTION</a>
+            <a href="wishlist.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">WISHLIST</a>
+            <a href="contact.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">CONTACT</a>
         </div>
-    </nav>
+
+        <!-- Right: Conditional Login/Logout -->
+        <div>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <span class="text-yellow-500">Welcome, <?php echo htmlspecialchars($username); ?></span>
+                <a href="logout.php" class="px-3 py-2 ml-4 bg-red-500 text-white rounded">LOGOUT</a>
+            <?php else: ?>
+                <a href="/FULLSTACK_PROJECT/auth/login.html" class="px-3 py-2 bg-yellow-500 text-white rounded">LOGIN / SIGN UP</a>
+            <?php endif; ?>
+        </div>
+    </div>
+</nav>
+
 
     <!-- Hero Section -->
 <section class="bg-gray-100 py-16">
@@ -103,7 +104,7 @@
         </div>
         <!-- Right: Image with Sale Badge -->
 <div class="w-full md:w-1/2 relative">
-    <img src="\images\Hero_img.jpg" alt="Hero Image" class="w-full md:w-[500px] md:h-[700px] object-cover ">
+    <img src="\FULLSTACK_PROJECT\images\Hero_img.jpg" alt="Hero Image" class="w-full md:w-[500px] md:h-[700px] object-cover ">
     <div class="absolute top-4 right-4 md:top-1 md:right-15 bg-yellow-500 text-white rounded-full w-28 h-28 flex items-center justify-center z-10">
         <span class="text-2xl font-bold">SALE 50%</span>
     </div>
@@ -116,21 +117,21 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Men's -->
             <div class="relative">
-                <img src="\images\men's.jpg" alt="Men's" class="w-full h-64 object-cover hover:scale-105">
+                <img src="\FULLSTACK_PROJECT\images\men's.jpg" alt="Men's" class="w-full h-64 object-cover hover:scale-105">
                 <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-300 px-6 py-2">
                     <span class="text-xl font-bold">Men's</span>
                 </div>
             </div>
             <!-- Women's -->
             <div class="relative">
-                <img src="\images\women's.avif" alt="Women's" class="w-full h-64 object-cover hover:scale-105">
+                <img src="\FULLSTACK_PROJECT\images\women's.avif" alt="Women's" class="w-full h-64 object-cover hover:scale-105">
                 <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-300 px-6 py-2">
                     <span class="text-xl font-bold">Women's</span>
                 </div>
             </div>
             <!-- Kids -->
             <div class="relative">
-                <img src="\images\kid's.jpg" alt="Kids" class="w-full h-64 object-cover hover:scale-105">
+                <img src="\FULLSTACK_PROJECT\images\kid's.jpg" alt="Kids" class="w-full h-64 object-cover hover:scale-105">
                 <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-300 px-6 py-2">
                     <span class="text-xl font-bold ">Kids</span>
                 </div>
