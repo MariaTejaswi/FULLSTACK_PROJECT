@@ -17,6 +17,8 @@ $sql = "SELECT c.id, p.name, p.price, c.quantity
         JOIN products p ON c.product_id = p.id 
         WHERE c.user_id = $user_id";
 $result = $conn->query($sql);
+
+$total_amount = 0;
 ?>
 
 <!DOCTYPE html>
@@ -46,24 +48,71 @@ $result = $conn->query($sql);
                         <th class="px-4 py-2">Price</th>
                         <th class="px-4 py-2">Quantity</th>
                         <th class="px-4 py-2">Total</th>
+                        <th class="px-4 py-2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($row = $result->fetch_assoc()): ?>
+                    <?php while ($row = $result->fetch_assoc()): 
+                        $product_total = $row['price'] * $row['quantity'];
+                        $total_amount += $product_total;
+                    ?>
                         <tr class="text-center">
                             <td class="px-4 py-2"><?php echo htmlspecialchars($row['name']); ?></td>
                             <td class="px-4 py-2">₹<?php echo number_format($row['price'], 2); ?></td>
                             <td class="px-4 py-2"><?php echo $row['quantity']; ?></td>
-                            <td class="px-4 py-2">₹<?php echo number_format($row['price'] * $row['quantity'], 2); ?></td>
+                            <td class="px-4 py-2">₹<?php echo number_format($product_total, 2); ?></td>
+                            <td class="px-4 py-2">
+                                <button onclick="removeFromCart(<?php echo $row['id']; ?>)" 
+                                    class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700">
+                                    Delete
+                                </button>
+                            </td>
                         </tr>
                     <?php endwhile; ?>
+                    <tr class="bg-gray-200 text-center font-bold">
+                        <td colspan="3" class="px-4 py-2 text-right">Total Amount:</td>
+                        <td class="px-4 py-2">₹<?php echo number_format($total_amount, 2); ?></td>
+                        <td></td>
+                    </tr>
                 </tbody>
             </table>
         <?php else: ?>
             <p class="text-center text-gray-600 mt-10">Your cart is empty.</p>
         <?php endif; ?>
-
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Ensure SweetAlert is included -->
+
+<script>
+function removeFromCart(cartId) {
+    fetch('/FULLSTACK_PROJECT/cart/remove_from_cart.php', {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "cart_id=" + encodeURIComponent(cartId)
+    })
+    .then(response => response.json())
+    .then(data => {
+        Swal.fire({
+            title: data.status,
+            text: data.message,
+            icon: data.icon,
+            confirmButtonColor: "#FFD700"
+        }).then(() => {
+            location.reload(); // Refresh the page after action
+        });
+    })
+    .catch(error => {
+        console.error("Fetch Error:", error);
+        Swal.fire({
+            title: "Error",
+            text: "Failed to connect to the server!",
+            icon: "error",
+            confirmButtonColor: "#FFD700"
+        });
+    });
+}
+</script>
+
 
 </body>
 </html>

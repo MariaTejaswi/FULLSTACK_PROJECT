@@ -77,9 +77,9 @@ $result = $conn->query($sql);
     fetch('/FULLSTACK_PROJECT/cart/add_to_cart.php', {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: "product_id=" + encodeURIComponent(productId)
+        body: "product_id=" + encodeURIComponent(productId) + "&quantity=1" // Always adding 1 item
     })
-    .then(response => response.json())  
+    .then(response => response.json())
     .then(data => {
         Swal.fire({
             title: data.status,
