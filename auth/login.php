@@ -3,11 +3,16 @@ include "db.php";
 session_start(); // Start session at the beginning
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["username"];
+    $email = trim($_POST["username"]); // Trim to remove spaces
     $password = $_POST["password"];
 
     $sql = "SELECT id, fullname, password FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
+
+    if (!$stmt) {
+        die("Query preparation failed: " . $conn->error);
+    }
+
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
@@ -17,6 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->fetch();
 
         if (password_verify($password, $hashed_password)) {
+            // Regenerate session ID for security
+            session_regenerate_id(true);
+
             $_SESSION["user_id"] = $id;
             $_SESSION["username"] = $fullname; // Store the user's name
 
@@ -36,5 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </script>";
         exit();
     }
+    
+    $stmt->close();
 }
+$conn->close();
 ?>
