@@ -6,24 +6,32 @@
     <title>Signup Page</title>
     <link href="/FULLSTACK_PROJECT/src/output.css" rel="stylesheet"> <!-- Ensure this is correctly compiled using Tailwind CLI -->
 </head>
-<body class="bg-gradient-to-r from-blue-200 to-orange-200 px-6 pb-4">
+<body class="bg-[#3B8A9C] px-6 pb-4">
+  <div class="absolute inset-0 bg-[url('../images/signup.jpg')] bg-cover bg-center opacity-75 fixed"></div>
 
   <!-- Navigation Bar -->
-  <nav class="w-full bg-white h-20 flex justify-between items-center px-6 md:px-20 border-b-2 shadow-md fixed top-0 left-0 right-0 z-10">
-    <h2 class="font-extrabold font-serif text-3xl md:text-6xl">Clothहब</h2>
+  <nav class="w-full bg-[#3B8A9C] h-20 flex justify-between items-center px-6 md:px-20 border-b-2 shadow-md fixed top-0 left-0 right-0 z-10">
+    <div class="flex items-center gap-3 bg-[#3B8A9C]">
+    <img src="../images/fashionStore.jpg" alt="logo" class="w-20 h-20 rounded-4xl">
+    <h2 class=" font-serif text-3xl md:text-5xl">Fashion Store</h2>
+  </div>
     <div class="flex gap-4 md:gap-10">
       <a href="/FULLSTACK_PROJECT/auth/login.html">
-        <button class="bg-white hover:bg-gray-100 text-black font-mono border-1 rounded-2xl h-10 px-4 md:h-12 md:px-6 hover:cursor-pointer">
+        <button class="bg-neutral-700 hover:bg-black text-white font-serif border-2 rounded-2xl h-10 px-4 md:h-12 md:px-5 hover:cursor-pointer">
           Log In
         </button>
       </a>
     </div>
-</nav>
+  </nav>
+
+
+<div class="w-full max-w-md mx-auto relative mt-30 md:mt-60">
+<div class="absolute w-[200%] h-[120%] left-[-50%] top-[-10%] bg-gray-300/50 backdrop-blur-lg rounded-xl shadow-xl z-0"></div>
 
   <!-- Signup Form -->
   <div class="max-w-sm md:max-w-md mx-auto bg-white/70 backdrop-blur-md rounded-2xl mt-28 p-6 md:p-10 shadow-lg md:mt-44">
-    <h1 class="text-center text-3xl md:text-4xl font-bold font-mono">Sign Up</h1>
-    <h2 class="text-center font-mono pb-6 text-sm md:text-base">
+    <h1 class="text-center text-3xl md:text-4xl font-bold font-serif">Sign Up</h1>
+    <h2 class="text-center font-serif pb-6 text-sm md:text-base">
       Already have an account? 
       <a href="/FULLSTACK_PROJECT/auth/login.html" class="underline font-semibold">Login</a>
     </h2>
@@ -72,11 +80,11 @@
       </div>
 
       <button type="submit"
-          class="w-full mt-5 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition hover:cursor-pointer">
+          class="w-full mt-5 bg-[#3B8A9C] text-white py-2 rounded-lg hover:bg-[#589ca0eb] transition hover:cursor-pointer">
           Sign Up
       </button>
     </form>
   </div>
-
+</div>
 </body>
 </html>

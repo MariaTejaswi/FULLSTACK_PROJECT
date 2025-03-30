@@ -11,8 +11,10 @@
     --color-red-500: oklch(0.637 0.237 25.331);
     --color-red-700: oklch(0.505 0.213 27.518);
     --color-orange-200: oklch(0.901 0.076 70.697);
+    --color-amber-50: oklch(0.987 0.022 95.277);
     --color-yellow-500: oklch(0.795 0.184 86.047);
     --color-blue-200: oklch(0.882 0.059 254.128);
+    --color-blue-400: oklch(0.707 0.165 254.624);
     --color-blue-500: oklch(0.623 0.214 259.815);
     --color-blue-600: oklch(0.546 0.245 262.881);
     --color-blue-700: oklch(0.488 0.243 264.376);
@@ -275,8 +277,17 @@
   .top-4 {
     top: calc(var(--spacing) * 4);
   }
+  .top-\[-5\%\] {
+    top: -5%;
+  }
+  .top-\[-10\%\] {
+    top: -10%;
+  }
   .top-\[-15\%\] {
     top: -15%;
+  }
+  .top-\[-20\%\] {
+    top: -20%;
   }
   .right-0 {
     right: calc(var(--spacing) * 0);
@@ -416,6 +427,9 @@
       max-width: 96rem !important;
     }
   }
+  .m-10 {
+    margin: calc(var(--spacing) * 10);
+  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -475,6 +489,9 @@
   }
   .mb-8 {
     margin-bottom: calc(var(--spacing) * 8);
+  }
+  .mb-10 {
+    margin-bottom: calc(var(--spacing) * 10);
   }
   .ml-0 {
     margin-left: calc(var(--spacing) * 0);
@@ -676,6 +693,9 @@
   }
   .h-64 {
     height: calc(var(--spacing) * 64);
+  }
+  .h-\[120\%\] {
+    height: 120%;
   }
   .h-\[130\%\] {
     height: 130%;
@@ -1535,6 +1555,12 @@
   .bg-\[url\(\'\.\.\/images\/room\.jpg\'\)\] {
     background-image: url('../images/room.jpg');
   }
+  .bg-\[url\(\'\.\.\/images\/signup\.jpg\'\)\] {
+    background-image: url('../images/signup.jpg');
+  }
+  .bg-\[url\(\'\.\.\/images\/signupjpg\'\)\] {
+    background-image: url('../images/signupjpg');
+  }
   .bg-none {
     background-image: none;
   }
@@ -2158,6 +2184,12 @@
   .shadow-initial {
     --tw-shadow-color: initial;
   }
+  .ring-amber-50 {
+    --tw-ring-color: var(--color-amber-50);
+  }
+  .ring-blue-400 {
+    --tw-ring-color: var(--color-blue-400);
+  }
   .inset-shadow-initial {
     --tw-inset-shadow-color: initial;
   }
@@ -2605,6 +2637,11 @@
   .md\:mt-72 {
     @media (width >= 48rem) {
       margin-top: calc(var(--spacing) * 72);
+    }
+  }
+  .md\:mb-10 {
+    @media (width >= 48rem) {
+      margin-bottom: calc(var(--spacing) * 10);
     }
   }
   .md\:ml-4 {
