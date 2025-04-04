@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-if (!isset($_POST['product_id']) || !isset($_POST['quantity'])) {
+if (!isset($_POST['product_id']) || !isset($_POST['quantity']) || !is_numeric($_POST['product_id'])) {
     echo json_encode(["status" => "Error", "message" => "Invalid product data!", "icon" => "error"]);
     exit;
 }

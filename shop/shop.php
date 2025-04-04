@@ -49,15 +49,17 @@ $result = $conn->query($sql);
                 <div class="bg-white shadow-md rounded-lg overflow-hidden transform transition duration-300 hover:shadow-2xl hover:scale-105 relative">
                     <img src="<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['name']); ?>" class="w-full h-60 object-cover">
                     
-                    <button onclick="addToWishlist(<?php echo $row['name']; ?>)"
+                    <!-- <button onclick="addToWishlist(<?php echo $row['name']; ?>)"
                         class="absolute top-4 right-4 bg-white rounded-full p-2 shadow-lg transition duration-200 hover:bg-yellow-500 group">
                         <svg class="w-6 h-6 text-gray-500 group-hover:text-white transition duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-.06-.06a5.5 5.5 0 00-7.78 7.78l7.84 7.84a.75.75 0 001.06 0l7.84-7.84a5.5 5.5 0 000-7.78z"></path>
                         </svg>
-                    </button>
+                    </button> -->
 
                     <div class="p-5">
-                        <h3 class="text-xl font-semibold"><?php echo htmlspecialchars($row['name']); ?></h3>
+                        <a href="/FULLSTACK_PROJECT/product/product.php?id=<?php echo $row['id']; ?>" class="text-xl font-semibold hover:underline">
+                            <?php echo htmlspecialchars($row['name']); ?>
+                        </a>
                         <p class="text-gray-600 text-sm"><?php echo htmlspecialchars($row['description']); ?></p>
                         <p class="text-lg font-bold text-yellow-500 mt-2">₹<?php echo number_format($row['price'], 2); ?></p>
                         <button onclick="addToCart(<?php echo $row['id']; ?>)" 
@@ -71,7 +73,7 @@ $result = $conn->query($sql);
             <?php endwhile; ?>
         </div>
     </section>
-
+    
     <script>
         function addToCart(productId) {
     fetch('/FULLSTACK_PROJECT/cart/add_to_cart.php', {
