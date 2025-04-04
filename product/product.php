@@ -20,6 +20,31 @@ if ($result->num_rows === 0) {
 }
 
 $product = $result->fetch_assoc();
+// Update global product click count
+$update_clicks_sql = "UPDATE products SET clicks = clicks + 1 WHERE id = ?";
+$stmt = $conn->prepare($update_clicks_sql);
+$stmt->bind_param("i", $product_id);
+$stmt->execute();
+
+// If user is logged in, update per-user clicks
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    // Try to update first
+    $update_user_click = "UPDATE product_clicks SET clicks = clicks + 1 WHERE user_id = ? AND product_id = ?";
+    $stmt = $conn->prepare($update_user_click);
+    $stmt->bind_param("ii", $user_id, $product_id);
+    $stmt->execute();
+
+    // If no row was updated, insert new
+    if ($stmt->affected_rows === 0) {
+        $insert_user_click = "INSERT INTO product_clicks (user_id, product_id, clicks) VALUES (?, ?, 1)";
+        $stmt = $conn->prepare($insert_user_click);
+        $stmt->bind_param("ii", $user_id, $product_id);
+        $stmt->execute();
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
