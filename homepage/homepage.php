@@ -76,7 +76,7 @@ session_start();
             <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">SHOP</a>
             <!-- <a href="collection.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">COLLECTION</a> -->
             <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">CART</a>
-            <a href="contact.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">CONTACT</a>
+            <a href="/FULLSTACK_PROJECT/contact/contact.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">CONTACT</a>
         </div>
 
         <!-- Right: Conditional Login/Logout -->
