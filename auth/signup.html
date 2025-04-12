@@ -17,74 +17,84 @@
   </div>
     <div class="flex gap-4 md:gap-10">
       <a href="/FULLSTACK_PROJECT/auth/login.html">
-        <button class="bg-neutral-700 hover:bg-black text-white font-serif border-2 rounded-2xl h-10 px-4 md:h-12 md:px-5 hover:cursor-pointer">
+        <button class="bg-white hover:bg-gray-400 hover:text-white text-[#3B8A9C] font-serif border-2 rounded-2xl h-10 px-4 md:h-12 md:px-5 hover:cursor-pointer">
           Log In
         </button>
       </a>
     </div>
   </nav>
 
+  <div class="w-full max-w-md mx-auto relative mt-30 md:mt-60">
+    <div class="absolute w-[200%] h-[120%] left-[-50%] top-[-10%] bg-gray-300/50 backdrop-blur-lg rounded-xl shadow-xl z-0"></div>
 
-<div class="w-full max-w-md mx-auto relative mt-30 md:mt-60">
-<div class="absolute w-[200%] h-[120%] left-[-50%] top-[-10%] bg-gray-300/50 backdrop-blur-lg rounded-xl shadow-xl z-0"></div>
+    <!-- Signup Form -->
+    <div class="max-w-sm md:max-w-md mx-auto bg-white/70 backdrop-blur-md rounded-2xl mt-28 p-6 md:p-10 shadow-lg md:mt-44">
+      <h1 class="text-center text-3xl md:text-4xl font-bold font-serif">Sign Up</h1>
+      <h2 class="text-center font-serif pb-6 text-sm md:text-base">
+        Already have an account? 
+        <a href="/FULLSTACK_PROJECT/auth/login.html" class="underline font-semibold">Login</a>
+      </h2>
 
-  <!-- Signup Form -->
-  <div class="max-w-sm md:max-w-md mx-auto bg-white/70 backdrop-blur-md rounded-2xl mt-28 p-6 md:p-10 shadow-lg md:mt-44">
-    <h1 class="text-center text-3xl md:text-4xl font-bold font-serif">Sign Up</h1>
-    <h2 class="text-center font-serif pb-6 text-sm md:text-base">
-      Already have an account? 
-      <a href="/FULLSTACK_PROJECT/auth/login.html" class="underline font-semibold">Login</a>
-    </h2>
-
-    <form action="/FULLSTACK_PROJECT/auth/signup.php" method="POST">
-      <div class="mb-4">
-          <label for="fullname" class="font-medium text-gray-700">Full Name</label>
-          <input type="text" id="fullname" name="fullname" required
-              class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200">
-      </div>
-
-      <div class="mb-4 flex flex-col md:flex-row gap-4">
-        <div class="w-full md:w-1/2">
-          <label for="gender" class="font-medium text-gray-700">Gender</label>
-          <select id="gender" name="gender" class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200">
-            <option value="select">Select</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-            <option value="na">Prefer not to say</option>
-          </select>
+      <form action="/FULLSTACK_PROJECT/auth/signup.php" method="POST">
+        <div class="mb-4">
+            <label for="fullname" class="font-medium text-gray-700">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required
+                class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200">
         </div>
-        <div class="w-full md:w-1/2">
-          <label for="age" class="font-medium text-gray-700">Age</label>
-          <input type="number" min="13" max="80" id="age" name="age" required
-              class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200">
+
+        <div class="mb-4 flex flex-col md:flex-row gap-4">
+          <div class="w-full md:w-1/2">
+            <label for="gender" class="font-medium text-gray-700">Gender</label>
+            <select id="gender" name="gender" class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200">
+              <option value="select">Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+              <option value="na">Prefer not to say</option>
+            </select>
+          </div>
+          <div class="w-full md:w-1/2">
+            <label for="age" class="font-medium text-gray-700">Age</label>
+            <input type="number" min="13" max="80" id="age" name="age" required
+                class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200">
+          </div>
         </div>
-      </div>
 
-      <div class="mb-4">
-          <label for="email" class="font-medium text-gray-700">Email</label>
-          <input type="email" id="email" name="email" required
-              class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200">
-      </div>
+        <div class="mb-4">
+            <label for="email" class="font-medium text-gray-700">Email</label>
+            <input type="email" id="email" name="email" required
+                class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200">
+        </div>
 
-      <div class="mb-4">
-          <label for="password" class="font-medium text-gray-700">Password</label>
-          <input type="password" id="password" name="password" required
-              class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200">
-      </div>
+        <div class="mb-4">
+            <label for="password" class="font-medium text-gray-700">Password</label>
+            <input type="password" id="password" name="password" required
+                class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200">
+        </div>
 
-      <div class="mb-4">
-          <label for="confirm_password" class="font-medium text-gray-700">Confirm Password</label>
-          <input type="password" id="confirm_password" name="confirm_password" required
-              class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200">
-      </div>
+        <div class="mb-4">
+            <label for="confirm_password" class="font-medium text-gray-700">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" required
+                class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200">
+        </div>
 
-      <button type="submit"
-          class="w-full mt-5 bg-[#3B8A9C] text-white py-2 rounded-lg hover:bg-[#589ca0eb] transition hover:cursor-pointer">
-          Sign Up
-      </button>
-    </form>
+        <!-- Terms and Privacy -->
+        <div class="flex items-center mb-4">
+          <input type="checkbox" id="terms" name="terms" required 
+                 class="mr-2 h-5 w-5">
+          <label for="terms" class="text-sm">
+            I agree to the 
+            <a href="/FULLSTACK_PROJECT/auth/terms-and-privacy.html" class="underline font-semibold">Terms & Conditions</a> and 
+            <a href="/FULLSTACK_PROJECT/auth/terms-and-privacy.html" class="underline font-semibold">Privacy Policy</a>.
+          </label>
+        </div>
+
+        <button type="submit"
+            class="w-full mt-5 bg-[#3B8A9C] text-white py-2 rounded-lg hover:bg-[#589ca0eb] transition hover:cursor-pointer">
+            Sign Up
+        </button>
+      </form>
+    </div>
   </div>
-</div>
 </body>
 </html>
