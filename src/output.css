@@ -10,8 +10,12 @@
     --color-red-500: oklch(0.637 0.237 25.331);
     --color-red-700: oklch(0.505 0.213 27.518);
     --color-yellow-500: oklch(0.795 0.184 86.047);
+    --color-yellow-600: oklch(0.681 0.162 75.834);
     --color-blue-200: oklch(0.882 0.059 254.128);
+<<<<<<< HEAD
     --color-blue-500: oklch(0.623 0.214 259.815);
+=======
+>>>>>>> 457a4e434e2ce907cd836b4243ddb13d82bf1fac
     --color-gray-100: oklch(0.967 0.003 264.542);
     --color-gray-200: oklch(0.928 0.006 264.531);
     --color-gray-300: oklch(0.872 0.01 258.338);
@@ -25,8 +29,13 @@
     --spacing: 0.25rem;
     --container-sm: 24rem;
     --container-md: 28rem;
+<<<<<<< HEAD
     --container-xl: 36rem;
     --container-3xl: 48rem;
+=======
+    --container-4xl: 56rem;
+    --container-5xl: 64rem;
+>>>>>>> 457a4e434e2ce907cd836b4243ddb13d82bf1fac
     --container-7xl: 80rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
@@ -437,6 +446,12 @@
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
   }
+<<<<<<< HEAD
+=======
+  .mt-12 {
+    margin-top: calc(var(--spacing) * 12);
+  }
+>>>>>>> 457a4e434e2ce907cd836b4243ddb13d82bf1fac
   .mt-28 {
     margin-top: calc(var(--spacing) * 28);
   }
@@ -479,9 +494,12 @@
   .ml-4 {
     margin-left: calc(var(--spacing) * 4);
   }
+<<<<<<< HEAD
   .ml-6 {
     margin-left: calc(var(--spacing) * 6);
   }
+=======
+>>>>>>> 457a4e434e2ce907cd836b4243ddb13d82bf1fac
   .ml-35 {
     margin-left: calc(var(--spacing) * 35);
   }
@@ -581,9 +599,12 @@
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
+<<<<<<< HEAD
   .h-5 {
     height: calc(var(--spacing) * 5);
   }
+=======
+>>>>>>> 457a4e434e2ce907cd836b4243ddb13d82bf1fac
   .h-6 {
     height: calc(var(--spacing) * 6);
   }
@@ -595,6 +616,9 @@
   }
   .h-28 {
     height: calc(var(--spacing) * 28);
+  }
+  .h-48 {
+    height: calc(var(--spacing) * 48);
   }
   .h-60 {
     height: calc(var(--spacing) * 60);
@@ -662,8 +686,16 @@
   .w-screen {
     width: 100vw;
   }
+<<<<<<< HEAD
   .max-w-3xl {
     max-width: var(--container-3xl);
+=======
+  .max-w-4xl {
+    max-width: var(--container-4xl);
+  }
+  .max-w-5xl {
+    max-width: var(--container-5xl);
+>>>>>>> 457a4e434e2ce907cd836b4243ddb13d82bf1fac
   }
   .max-w-7xl {
     max-width: var(--container-7xl);
@@ -1092,6 +1124,9 @@
   .gap-6 {
     gap: calc(var(--spacing) * 6);
   }
+  .gap-8 {
+    gap: calc(var(--spacing) * 8);
+  }
   .gap-10 {
     gap: calc(var(--spacing) * 10);
   }
@@ -1473,6 +1508,7 @@
   .bg-\[url\(\'\.\.\/images\/signup\.jpg\'\)\] {
     background-image: url('../images/signup.jpg');
   }
+<<<<<<< HEAD
   .bg-\[url\(\'\.\.\/images\\contactus\.png\'\)\] {
     background-image: url('../images\contactus.png');
   }
@@ -1482,6 +1518,8 @@
   .bg-\[url\(\'images\\contactus\.png\'\)\] {
     background-image: url('images\contactus.png');
   }
+=======
+>>>>>>> 457a4e434e2ce907cd836b4243ddb13d82bf1fac
   .bg-none {
     background-image: none;
   }
@@ -1651,8 +1689,13 @@
   .p-6 {
     padding: calc(var(--spacing) * 6);
   }
+<<<<<<< HEAD
   .p-10 {
     padding: calc(var(--spacing) * 10);
+=======
+  .p-8 {
+    padding: calc(var(--spacing) * 8);
+>>>>>>> 457a4e434e2ce907cd836b4243ddb13d82bf1fac
   }
   .p-20 {
     padding: calc(var(--spacing) * 20);
@@ -1869,9 +1912,6 @@
   .text-black {
     color: var(--color-black);
   }
-  .text-blue-500 {
-    color: var(--color-blue-500);
-  }
   .text-gray-500 {
     color: var(--color-gray-500);
   }
@@ -1881,9 +1921,6 @@
   .text-gray-700 {
     color: var(--color-gray-700);
   }
-  .text-red-500 {
-    color: var(--color-red-500);
-  }
   .text-white {
     color: var(--color-white);
   }
@@ -1892,6 +1929,9 @@
   }
   .text-yellow-500 {
     color: var(--color-yellow-500);
+  }
+  .text-yellow-600 {
+    color: var(--color-yellow-600);
   }
   .capitalize {
     text-transform: capitalize;
@@ -2436,6 +2476,7 @@
       }
     }
   }
+<<<<<<< HEAD
   .hover\:bg-gray-100 {
     &:hover {
       @media (hover: hover) {
@@ -2450,6 +2491,8 @@
       }
     }
   }
+=======
+>>>>>>> 457a4e434e2ce907cd836b4243ddb13d82bf1fac
   .hover\:bg-red-700 {
     &:hover {
       @media (hover: hover) {
@@ -2468,6 +2511,13 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-white);
+      }
+    }
+  }
+  .hover\:text-yellow-500 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-yellow-500);
       }
     }
   }

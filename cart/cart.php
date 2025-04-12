@@ -7,7 +7,18 @@ if ($conn->connect_error) {
 }
 
 if (!isset($_SESSION['user_id'])) {
-    echo "<p class='text-center text-red-500 mt-10'>You must <a href='/FULLSTACK_PROJECT/auth/login.html' class='text-blue-500'>log in</a> to view your cart.</p>";
+    echo "
+    // <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    <script>
+        Swal.fire({
+            title: 'Login Required',
+            text: 'Please log in to view your cart.',
+            icon: 'warning',
+            confirmButtonColor: '#FFD700'
+        }).then(() => {
+            window.location.href = '/FULLSTACK_PROJECT/auth/login.html';
+        });
+    </script>";
     exit;
 }
 

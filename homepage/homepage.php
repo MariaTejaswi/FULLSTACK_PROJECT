@@ -68,7 +68,6 @@ session_start();
     </header>
 
     <!-- Navigation -->
-    <!-- Navigation -->
 <nav class="bg-black text-white">
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <!-- Left: Menu Items -->
@@ -76,8 +75,8 @@ session_start();
             <a href="homepage.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">HOME</a>
             <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">SHOP</a>
             <!-- <a href="collection.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">COLLECTION</a> -->
-            <a href="wishlist.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">WISHLIST</a>
-            <a href="contact.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">CONTACT</a>
+            <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">CART</a>
+            <a href="/FULLSTACK_PROJECT/contact/contact.php" class="px-3 py-2 block hover:bg-yellow-500 rounded">CONTACT</a>
         </div>
 
         <!-- Right: Conditional Login/Logout -->
