@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["user_id"] = $id;
             $_SESSION["username"] = $fullname; // Store the user's name
 
-            header("Location: /FULLSTACK_PROJECT/homepage/homepage.php");
+            header("Location: /FULLSTACK_PROJECT/homepage/homepage1.php");
             exit();
         } else {
             echo "<script>
