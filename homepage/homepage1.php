@@ -31,7 +31,7 @@ session_start();
     <!-- Left: Menu Links -->
     <div class="flex space-x-6">
       <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">HOME</a>
-      <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">ACCESSORIES</a>
+      <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">SHOP</a>
       <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
     </div>
 
@@ -40,7 +40,7 @@ session_start();
 
     <!-- Right: Contact and Login/Logout -->
     <div class="flex items-center space-x-4">
-      <a href="wishlist.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CONTACT</a>
+      <a href="/FULLSTACK_PROJECT/contactus/contact.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CONTACT</a>
       <div class="flex items-center space-x-2">
         <?php if (isset($_SESSION['user_id'])): ?>
           <!-- Debug: Check if $_SESSION['username'] is set correctly in login script -->

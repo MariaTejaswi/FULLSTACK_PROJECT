@@ -95,9 +95,108 @@ $total_amount = 0;
             </div>
 
         </div>
+
+        <!-- Payment Section -->
+<div class="mt-12 bg-white border-2 border-[#3B8A9C] shadow-lg rounded-xl p-6 text-center animate-fadein">
+    <h2 class="text-2xl font-bold mb-4">Ready to Checkout?</h2>
+    <p class="text-lg mb-6">Complete your purchase securely</p>
+    <button onclick="openPaymentModal()" class="bg-[#3B8A9C] hover:bg-[#317488] text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition">Proceed to Payment</button>
+</div>
+
+<!-- Payment Modal -->
+<div id="paymentModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-white p-8 rounded-xl w-full max-w-md relative animate-fadein shadow-xl border-2 border-[#3B8A9C]">
+        <button onclick="closePaymentModal()" class="absolute top-3 right-4 text-2xl text-red-600 hover:text-red-800">&times;</button>
+        <h3 class="text-2xl font-bold mb-6 text-[#3B8A9C] text-center">Choose Payment Method</h3>
+
+        <div class="flex justify-center gap-2 mb-4">
+            <button onclick="showTab('cardTab')" id="cardTabBtn" class="tab-btn bg-[#3B8A9C] text-white px-4 py-2 rounded shadow">Card</button>
+            <button onclick="showTab('upiTab')" id="upiTabBtn" class="tab-btn bg-gray-200 text-[#3B8A9C] px-4 py-2 rounded shadow">UPI</button>
+            <button onclick="showTab('debitTab')" id="debitTabBtn" class="tab-btn bg-gray-200 text-[#3B8A9C] px-4 py-2 rounded shadow">Debit/Credit</button>
+        </div>
+
+        <!-- CARD PAYMENT -->
+        <form id="cardTab" onsubmit="handlePayment(event)" class="space-y-4 payment-tab">
+            <input type="text" required placeholder="Name on Card" class="w-full px-4 py-2 border placeholder-gray-400  rounded">
+            <input type="text" required placeholder="Card Number" maxlength="16" class="w-full px-4 py-2 border placeholder-gray-400 rounded">
+            <div class="flex gap-4">
+                <input type="text" required placeholder="MM/YY" maxlength="5" class="w-1/2 px-4 py-2 border placeholder-gray-400  rounded">
+                <input type="text" required placeholder="CVV" maxlength="3" class="w-1/2 px-4 py-2 border placeholder-gray-400 rounded">
+            </div>
+            <button type="submit" class="w-full bg-[#3B8A9C] hover:bg-[#317488] text-white font-bold py-2 rounded transition">Pay ₹<?php echo number_format($total_amount, 2); ?></button>
+        </form>
+
+        <!-- UPI PAYMENT -->
+        <form id="upiTab" onsubmit="handlePayment(event)" class="space-y-4 hidden payment-tab">
+            <input type="text" required placeholder="Your UPI ID (e.g., tejas@upi)" class="w-full px-4 py-2 border placeholder-gray-400  rounded">
+            <button type="submit" class="w-full bg-[#3B8A9C] hover:bg-[#317488] text-white font-bold py-2 rounded transition">Pay ₹<?php echo number_format($total_amount, 2); ?> via UPI</button>
+        </form>
+
+        <!-- DEBIT / CREDIT PAYMENT -->
+        <form id="debitTab" onsubmit="handlePayment(event)" class="space-y-4 hidden payment-tab">
+            <input type="text" required placeholder="Cardholder Name" class="w-full px-4 py-2 border placeholder-gray-400 rounded">
+            <input type="text" required placeholder="Card Number" maxlength="16" class="w-full px-4 py-2 border placeholder-gray-400 rounded">
+            <input type="text" required placeholder="Expiry Date (MM/YY)" maxlength="5" class="w-full px-4 py-2 border placeholder-gray-400  rounded">
+            <input type="text" required placeholder="CVV" maxlength="3" class="w-full px-4 py-2 border placeholder-gray-400 rounded">
+            <button type="submit" class="w-full bg-[#3B8A9C] hover:bg-[#317488] text-white font-bold py-2 rounded transition">Pay ₹<?php echo number_format($total_amount, 2); ?> with Card</button>
+        </form>
+    </div>
+</div>
     </section>
 
     <script>
+
+function showTab(tabId) {
+    document.querySelectorAll('.payment-tab').forEach(tab => tab.classList.add('hidden'));
+    document.getElementById(tabId).classList.remove('hidden');
+
+    // Update tab buttons styling
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-[#3B8A9C]', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-[#3B8A9C]');
+    });
+
+    const activeBtnId = tabId + "Btn";
+    document.getElementById(activeBtnId).classList.remove('bg-gray-200', 'text-[#3B8A9C]');
+    document.getElementById(activeBtnId).classList.add('bg-[#3B8A9C]', 'text-white');
+}
+
+        function openPaymentModal() {
+    document.getElementById('paymentModal').classList.remove('hidden');
+    gsap.from("#paymentModal > div", {
+        scale: 0.8,
+        opacity: 0,
+        duration: 0.5,
+        ease: "back.out(1.7)"
+    });
+}
+
+function closePaymentModal() {
+    gsap.to("#paymentModal > div", {
+        scale: 0.8,
+        opacity: 0,
+        duration: 0.3,
+        ease: "power1.in",
+        onComplete: () => {
+            document.getElementById('paymentModal').classList.add('hidden');
+        }
+    });
+}
+
+function handlePayment(e) {
+    e.preventDefault();
+    Swal.fire({
+        title: 'Payment Successful',
+        text: 'Your order has been placed!',
+        icon: 'success',
+        confirmButtonColor: '#3B8A9C'
+    }).then(() => {
+        closePaymentModal();
+        window.location.href = "/FULLSTACK_PROJECT/shop/shop.php";
+    });
+}
+
+
     function removeFromCart(cartId) {
         fetch('/FULLSTACK_PROJECT/cart/remove_from_cart.php', {
             method: "POST",
