@@ -24,9 +24,9 @@
   <img src="../images/fashionStore.jpg" alt="logo" class="w-20 mr-5 h-auto rounded-xl" />
   <div class="w-full flex justify-between items-center">
     <div class="flex space-x-20">
-      <a href="index.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">HOME</a>
-      <a href="shop.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">ACCESSORIES</a>
-      <a href="collection.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
+      <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">HOME</a>
+      <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">ACCESSORIES</a>
+      <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
     </div>
 
     <img src="../images/crown.png" alt="crown" class="ml-60 block w-26 h-auto" />
@@ -77,8 +77,12 @@
     <div class="w-full md:w-1/2 relative">
       <div class="relative w-full h-[700px] rounded overflow-hidden shadow-2xl shadow-black flex items-center justify-center">
         <img class="carousel-image absolute w-full h-full object-contain fade" src="/FULLSTACK_PROJECT/images/Hero_img.jpg" alt="Hero 1" />
-        <img class="carousel-image absolute w-full h-full object-contain fade hidden" src="/FULLSTACK_PROJECT/images/kids.jpg" alt="Hero 2" />
-        <img class="carousel-image absolute w-full h-full object-contain fade hidden" src="/FULLSTACK_PROJECT/images/mens.jpg" alt="Hero 3" />
+        <img class="carousel-image absolute w-full h-full object-contain fade hidden" src="/FULLSTACK_PROJECT/images/hero2.avif" alt="Hero 2" />
+        <img class="carousel-image absolute w-full h-full object-contain fade hidden" src="/FULLSTACK_PROJECT/images/hero3.avif" alt="Hero 3" />
+        <img class="carousel-image absolute w-full h-full object-contain fade hidden" src="/FULLSTACK_PROJECT/images/hero4.webp" alt="Hero 4" />
+        <img class="carousel-image absolute w-full h-full object-contain fade hidden" src="/FULLSTACK_PROJECT/images/hero5.jpg" alt="Hero 5" />
+        <img class="carousel-image absolute w-full h-full object-contain fade hidden" src="/FULLSTACK_PROJECT/images/hero6.avif" alt="Hero 6" />
+
       </div>
 
       <!-- Sale Tag -->
@@ -114,6 +118,86 @@
   </div>
 </section>
 <br><br>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-gray-500 to-[#3B8A9C] flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">FS</span>
+                    </div>
+                    <span class="text-xl font-bold">Fashion Store</span>
+                </div>
+                <p class="text-gray-400 mb-4">Your one-stop shop for the latest fashion trends and accessories.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Shop</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">FAQs</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Shipping Policy</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Returns & Refunds</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Size Guide</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Payment Methods</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                <ul class="space-y-3 text-gray-400">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                        <span>123 Fashion Street, Style City, 10001</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope mr-3"></i>
+                        <span>fashionstore@help.com</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone mr-3"></i>
+                        <span>+91 8008567896</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 ModaVibe. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a>
+                <a href="#" class="text-gray-400 hover:text-white text-sm transition">Cookies Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 
 <!-- JavaScript for Image Carousel -->
