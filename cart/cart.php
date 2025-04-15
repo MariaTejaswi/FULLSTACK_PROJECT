@@ -2,14 +2,10 @@
 session_start();
 $conn = new mysqli("localhost", "root", "", "fashionhub_db");
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
 if (!isset($_SESSION['user_id'])) {
     echo "
-    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script>
+    window.onload = function () {
         Swal.fire({
             title: 'Login Required',
             text: 'Please log in to view your cart.',
@@ -18,9 +14,11 @@ if (!isset($_SESSION['user_id'])) {
         }).then(() => {
             window.location.href = '/FULLSTACK_PROJECT/auth/login.html';
         });
+    }
     </script>";
     exit;
 }
+
 
 $user_id = $_SESSION['user_id'];
 $sql = "SELECT c.id, p.name, p.price, c.quantity 

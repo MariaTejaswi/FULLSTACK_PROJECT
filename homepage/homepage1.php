@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,45 +24,52 @@
 <body class="h-screen bg-white">
 
 <!-- Navigation Bar -->
-<nav class="top-0 left-0 w-full bg-transparent shadow-md text-black flex items-center justify-between px-6 py-2">
+<!-- Navigation Bar -->
+<nav class="top-0 left-0 w-full bg-transparent shadow-md text-black flex items-center px-6 py-2">
   <img src="../images/fashionStore.jpg" alt="logo" class="w-20 mr-5 h-auto rounded-xl" />
-  <div class="w-full flex justify-between items-center">
-    <div class="flex space-x-20">
+  <div class="w-full flex items-center justify-between">
+    <!-- Left: Menu Links -->
+    <div class="flex space-x-6">
       <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">HOME</a>
       <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">ACCESSORIES</a>
       <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
     </div>
 
-    <img src="../images/crown.png" alt="crown" class="ml-60 block w-26 h-auto" />
+    <!-- Center: Crown Image -->
+    <img src="../images/crown.png" alt="crown" class="mx-4 w-24 h-auto" />
 
-    <div class="flex ml-35 space-x-2 w-full">
-      <select class="border border-black rounded px-2 py-1">
-        <option value="all">All Categories</option>
-        <option value="mens">Men's</option>
-        <option value="womens">Women's</option>
-        <option value="kids">Kids</option>
-        <option value="accessories">Accessories</option>
-      </select>
-      <input type="text" placeholder="What do you need?" class="border border-black rounded px-2 py-1 w-full md:w-60" />
-      <button class="bg-[#3B8A9C] text-white px-4 py-1 rounded"><i class="fas fa-search"></i></button>
-    </div>
-
-    <div class="flex flex-end space-x-2">
+    <!-- Right: Contact and Login/Logout -->
+    <div class="flex items-center space-x-4">
       <a href="wishlist.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CONTACT</a>
-    </div>
-
-    <div>
-      <?php if (isset($_SESSION['user_id'])): ?>
-        <span class="text-[#3B8A9C]">Welcome, <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></span>
-        <a href="logout.php" class="px-3 py-2 ml-4 bg-[#3B8A9C] text-white rounded">LOGOUT</a>
-      <?php else: ?>
-        <a href="/FULLSTACK_PROJECT/auth/login.html" class="px-3 py-2 bg-[#3B8A9C] hover:text-white text-black rounded">LOGIN/SIGNUP</a>
-      <?php endif; ?>
+      <div class="flex items-center space-x-2">
+        <?php if (isset($_SESSION['user_id'])): ?>
+          <!-- Debug: Check if $_SESSION['username'] is set correctly in login script -->
+          <span class="text-[#3B8A9C] font-medium max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">Welcome, <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></span>
+          <a href="logout.php" class="px-3 py-2 bg-[#3B8A9C] text-white rounded hover:bg-[#337685] whitespace-nowrap">LOGOUT</a>
+        <?php else: ?>
+          <a href="/FULLSTACK_PROJECT/auth/login.html" class="px-3 py-2 bg-[#3B8A9C] text-white rounded hover:bg-[#337685] whitespace-nowrap">LOGIN/SIGNUP</a>
+        <?php endif; ?>
+      </div>
     </div>
   </div>
 </nav>
 
-<div class="text-black font-light text-center text-4xl mt-4" style="font-family: 'Playfair Display', sans-serif;">Fashion Store</div>
+<!-- Heading and Search Bar Section -->
+<div class="flex items-center px-6 py-2">
+  <div class="flex-1"></div>
+  <div class="text-black font-light pl-25 text-4xl absolute left-1/2 -translate-x-1/2" style="font-family: 'Playfair Display', sans-serif;">Fashion Store</div>
+  <div class="flex items-center space-x-2 ml-auto">
+    <select class="border border-black rounded px-2 py-1">
+      <option value="all">All Categories</option>
+      <option value="mens">Men's</option>
+      <option value="womens">Women's</option>
+      <option value="kids">Kids</option>
+      <option value="accessories">Accessories</option>
+    </select>
+    <input type="text" placeholder="What do you need?" class="border border-black rounded px-2 py-1 w-40 md:w-60" />
+    <button class="bg-[#3B8A9C] text-white px-4 py-1 rounded"><i class="fas fa-search"></i></button>
+  </div>
+</div>
 
 <!-- Hero Section -->
 <section class="bg-[#3B8A9C] min-h-[900px] py-24 mt-10">
@@ -82,7 +93,6 @@
         <img class="carousel-image absolute w-full h-full object-contain fade hidden" src="/FULLSTACK_PROJECT/images/hero4.webp" alt="Hero 4" />
         <img class="carousel-image absolute w-full h-full object-contain fade hidden" src="/FULLSTACK_PROJECT/images/hero5.jpg" alt="Hero 5" />
         <img class="carousel-image absolute w-full h-full object-contain fade hidden" src="/FULLSTACK_PROJECT/images/hero6.avif" alt="Hero 6" />
-
       </div>
 
       <!-- Sale Tag -->
@@ -198,7 +208,6 @@
         </div>
     </div>
 </footer>
-
 
 <!-- JavaScript for Image Carousel -->
 <script>
