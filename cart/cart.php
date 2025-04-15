@@ -43,8 +43,8 @@ $total_amount = 0;
 
     <nav class="bg-[#3B8A9C] text-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between">
-            <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 hover:bg-white hover:text-[#3B8A9C] transition rounded">SHOP</a>
-            <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 bg-white text-[#3B8A9C] font-bold rounded shadow">CART</a>
+            <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 hover:bg-white hover:text-[#3B8A9C] transition rounded">HOME</a>
+            <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 bg-white text-[#3B8A9C] font-bold rounded shadow">SHOP</a>
         </div>
     </nav>
 
@@ -128,7 +128,7 @@ $total_amount = 0;
 
         <!-- UPI PAYMENT -->
         <form id="upiTab" onsubmit="handlePayment(event)" class="space-y-4 hidden payment-tab">
-            <input type="text" required placeholder="Your UPI ID (e.g., tejas@upi)" class="w-full px-4 py-2 border placeholder-gray-400  rounded">
+            <input type="text" required placeholder="Your UPI ID (e.g., xyz@upi)" class="w-full px-4 py-2 border placeholder-gray-400  rounded">
             <button type="submit" class="w-full bg-[#3B8A9C] hover:bg-[#317488] text-white font-bold py-2 rounded transition">Pay ₹<?php echo number_format($total_amount, 2); ?> via UPI</button>
         </form>
 
