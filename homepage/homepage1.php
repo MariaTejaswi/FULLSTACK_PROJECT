@@ -11,6 +11,7 @@ session_start();
   <link rel="stylesheet" href="/FULLSTACK_PROJECT/src/output.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     .fade {
       animation: fadeEffect 1s ease-in-out;
@@ -33,11 +34,27 @@ session_start();
     <div class="flex space-x-6">
       <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">HOME</a>
       <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">SHOP</a>
-      <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
+      <?php if (!isset($_SESSION['user_id'])): ?>
+      <a href="#" onclick="showLoginAlert()" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
+      <script>
+          function showLoginAlert() {
+              Swal.fire({
+                  title: 'Login Required',
+                  text: 'Please log in to view your cart.',
+                  icon: 'warning',
+                  confirmButtonColor: '#3B8A9C'
+              }).then(() => {
+                  window.location.href = '/FULLSTACK_PROJECT/auth/login.html';
+              });
+          }
+      </script>
+      <?php else: ?>
+          <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
+      <?php endif; ?>
     </div>
 
     <!-- Center: Crown Image -->
-    <img src="../images/crown.png" alt="crown" class="mx-4 w-24 h-auto" />
+    <img src="../images/crown.png" alt="crown" class="mx-auto w-24 h-auto"/>
 
     <!-- Right: Contact and Login/Logout -->
     <div class="flex items-center space-x-4">
