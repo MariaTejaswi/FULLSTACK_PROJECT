@@ -19,11 +19,12 @@ session_start();
       from { opacity: 0.4; }
       to { opacity: 1; }
     }
+
+
   </style>
 </head>
 <body class="h-screen bg-white">
 
-<!-- Navigation Bar -->
 <!-- Navigation Bar -->
 <nav class="top-0 left-0 w-full bg-transparent shadow-md text-black flex items-center px-6 py-2">
   <img src="../images/fashionStore.jpg" alt="logo" class="w-20 mr-5 h-auto rounded-xl" />
@@ -59,7 +60,7 @@ session_start();
   <div class="flex-1"></div>
   <div class="text-black font-light pl-25 text-4xl absolute left-1/2 -translate-x-1/2" style="font-family: 'Playfair Display', sans-serif;">Fashion Store</div>
   <div class="flex items-center space-x-2 ml-auto">
-    <select class="border border-black rounded px-2 py-1">
+    <select class="border border-black rounded px-2 py-1" onchange="navigateCategory(this)">
       <option value="all">All Categories</option>
       <option value="mens">Men's</option>
       <option value="womens">Women's</option>
@@ -81,7 +82,9 @@ session_start();
         Discover the latest trends this Black Friday! <br class="hidden md:block" />
         Unbeatable deals on stylish clothing for the whole family.
       </p>
-      <button class="bg-white text-black px-6 py-2 mt-6 rounded hover:scale-105">SHOP NOW</button>
+      <a href="/FULLSTACK_PROJECT/shop/shop.php">
+      <button class="bg-white text-[#3B8A9C] font-bold px-6 py-2 mt-6 rounded hover:scale-105">SHOP NOW</button>
+      </a>
     </div>
 
     <!-- Image Carousel Section -->
@@ -106,27 +109,41 @@ session_start();
 <br><br>
 <!-- 4 Column Section (MEN WOMEN KIDS ACCESSORIES) -->
 <section class="flex flex-col md:flex-row justify-center items-stretch gap-4 px-4 mt-20">
-  <div class="bg-[#3B8A9C] w-full md:w-1/4 p-6 text-center rounded-lg shadow-md hover:scale-105 transition">
-    <h2 class="text-2xl font-semibold mb-2 text-white">MEN</h2>
-    <p class="text-white">Trendy styles for every man out there. Check out our newest arrivals.</p>
-    <img src="../images/mens.jpg" alt="mens">
-  </div>
-  <div class="bg-[#3B8A9C] w-full md:w-1/4 p-6 text-center rounded-lg shadow-md hover:scale-105 transition">
-    <h2 class="text-2xl font-semibold mb-2 text-white">WOMEN</h2>
-    <p class="text-white">Fashion-forward picks to keep you glowing. Discover now.</p><br>
-    <img src="../images/womens.avif" alt="womens">
-  </div>
-  <div class="bg-[#3B8A9C] w-full md:w-1/4 p-6 text-center rounded-lg shadow-md hover:scale-105 transition">
-    <h2 class="text-2xl font-semibold mb-2 text-white">KIDS</h2>
-    <p class="text-white">Adorable, durable, and fun outfits for the little ones.</p><br>
-    <img src="../images/kids.jpg" alt="kids">
-  </div>
-  <div class="bg-[#3B8A9C] w-full md:w-1/4 p-6 text-center rounded-lg shadow-md hover:scale-105 transition">
-    <h2 class="text-2xl font-semibold mb-2 text-white">ACCESSORIES</h2>
-    <p class="text-white">Complete your vibe with the latest accessories.</p><br>
-    <img src="../images/acc.png" alt="acc">
-  </div>
+
+  <a href="/FULLSTACK_PROJECT/shop/men.php" class="w-full md:w-1/4">
+    <div class="bg-[#3B8A9C] h-full p-6 text-center rounded-lg shadow-md hover:scale-105 transition cursor-pointer">
+      <h2 class="text-2xl font-semibold mb-2 text-white">MEN</h2>
+      <p class="text-white">Trendy styles for every man out there. Check out our newest arrivals.</p>
+      <img src="../images/mens.jpg" alt="mens" class="mt-4 mx-auto">
+    </div>
+  </a>
+
+  <a href="/FULLSTACK_PROJECT/shop/women.php" class="w-full md:w-1/4">
+    <div class="bg-[#3B8A9C] h-full p-6 text-center rounded-lg shadow-md hover:scale-105 transition cursor-pointer">
+      <h2 class="text-2xl font-semibold mb-2 text-white">WOMEN</h2>
+      <p class="text-white">Fashion-forward picks to keep you glowing. Discover now.</p>
+      <img src="../images/womens.avif" alt="womens" class="mt-4 mx-auto">
+    </div>
+  </a>
+
+  <a href="/FULLSTACK_PROJECT/shop/kids.php" class="w-full md:w-1/4">
+    <div class="bg-[#3B8A9C] h-full p-6 text-center rounded-lg shadow-md hover:scale-105 transition cursor-pointer">
+      <h2 class="text-2xl font-semibold mb-2 text-white">KIDS</h2>
+      <p class="text-white">Adorable, durable, and fun outfits for the little ones.</p>
+      <img src="../images/kids.jpg" alt="kids" class="mt-4 mx-auto">
+    </div>
+  </a>
+
+  <a href="/FULLSTACK_PROJECT/shop/accessories.php" class="w-full md:w-1/4">
+    <div class="bg-[#3B8A9C] h-full p-6 text-center rounded-lg shadow-md hover:scale-105 transition cursor-pointer">
+      <h2 class="text-2xl font-semibold mb-2 text-white">ACCESSORIES</h2>
+      <p class="text-white">Complete your vibe with the latest accessories.</p>
+      <img src="../images/acc.png" alt="acc" class="mt-4 mx-auto">
+    </div>
+  </a>
+
 </section>
+
 <br><br>
 
 <!-- Footer -->
@@ -142,16 +159,16 @@ session_start();
                 </div>
                 <p class="text-gray-400 mb-4">Your one-stop shop for the latest fashion trends and accessories.</p>
                 <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition">
+                    <a href="https://facebook.com" class="text-gray-400 hover:text-white transition">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
+                    <a href="https://twitter.com" class="text-gray-400 hover:text-white transition">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
+                    <a href="https://instagram.com" class="text-gray-400 hover:text-white transition">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
+                    <a href="https://pinterest.com" class="text-gray-400 hover:text-white transition">
                         <i class="fab fa-pinterest"></i>
                     </a>
                 </div>
@@ -160,22 +177,22 @@ session_start();
             <div>
                 <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Shop</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    <li><a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="text-gray-400 hover:text-white transition">Home</a></li>
+                    <li><a href="/FULLSTACK_PROJECT/shop/shop.php" class="text-gray-400 hover:text-white transition">Shop</a></li>
+                    <li><a href="/FULLSTACK_PROJECT/about.php" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                    <!-- <li><a href="/FULLSTACK_PROJECT/blog.php" class="text-gray-400 hover:text-white transition">Blog</a></li> -->
+                    <li><a href="/FULLSTACK_PROJECT/contactus/contact.php" class="text-gray-400 hover:text-white transition">Contact</a></li>
                 </ul>
             </div>
             
             <div>
                 <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">FAQs</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Shipping Policy</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Returns & Refunds</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Size Guide</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Payment Methods</a></li>
+                    <!-- <li><a href="/FULLSTACK_PROJECT/faq.php" class="text-gray-400 hover:text-white transition">FAQs</a></li> -->
+                    <li><a href="/FULLSTACK_PROJECT/auth/terms-and-privacy.php" class="text-gray-400 hover:text-white transition">Shipping Policy</a></li>
+                    <li><a href="/FULLSTACK_PROJECT/auth/terms-and-privacy.php" class="text-gray-400 hover:text-white transition">Returns & Refunds</a></li>
+                    <!-- <li><a href="/FULLSTACK_PROJECT/size-guide.php" class="text-gray-400 hover:text-white transition">Size Guide</a></li> -->
+                    <li><a href="/FULLSTACK_PROJECT/cart/cart.php" class="text-gray-400 hover:text-white transition">Payment Methods</a></li>
                 </ul>
             </div>
             
@@ -201,13 +218,14 @@ session_start();
         <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 ModaVibe. All rights reserved.</p>
             <div class="flex space-x-6">
-                <a href="#" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a>
-                <a href="#" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a>
-                <a href="#" class="text-gray-400 hover:text-white text-sm transition">Cookies Policy</a>
+                <a href="/FULLSTACK_PROJECT/privacy-policy.php" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a>
+                <a href="/FULLSTACK_PROJECT/terms-of-service.php" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a>
+                <a href="/FULLSTACK_PROJECT/cookies-policy.php" class="text-gray-400 hover:text-white text-sm transition">Cookies Policy</a>
             </div>
         </div>
     </div>
 </footer>
+
 
 <!-- JavaScript for Image Carousel -->
 <script>
@@ -225,6 +243,30 @@ session_start();
   }
 
   setInterval(showSlide, 3000);
+
+  function navigateCategory(select) {
+    const value = select.value;
+
+    switch(value) {
+      case "mens":
+        window.location.href = "/FULLSTACK_PROJECT/shop/men.php";
+        break;
+      case "womens":
+        window.location.href = "/FULLSTACK_PROJECT/shop/women.php";
+        break;
+      case "kids":
+        window.location.href = "/FULLSTACK_PROJECT/shop/kids.php";
+        break;
+      case "accessories":
+        window.location.href = "/FULLSTACK_PROJECT/shop/accessories.php";
+        break;
+      case "all":
+        window.location.href = "/FULLSTACK_PROJECT/shop/shop.php";
+        break;
+    }
+  }
+
+
 </script>
 
 </body>

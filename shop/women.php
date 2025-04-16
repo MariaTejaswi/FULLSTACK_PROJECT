@@ -42,7 +42,7 @@ $result = $conn->query($sql);
     </nav>
 
     <section class="max-w-7xl mx-auto py-12 px-4">
-        <h2 class="text-3xl font-bold text-center mb-8">Our Latest Collection for Women</h2>
+        <h2 class="text-3xl font-bold italic text-center mb-8">WOMEN'S LATEST COLLECTIONS</h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[40px] p-4">
             <?php while ($row = $result->fetch_assoc()): ?>
