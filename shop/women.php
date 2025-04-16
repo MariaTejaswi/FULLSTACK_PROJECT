@@ -19,7 +19,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="/FULLSTACK_PROJECT/src/output.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body class="font-sans bg-white text-black" id="body">
+<body class="font-sans bg-gradient-to-r from-[#5a99a8] to-[#F5F7FA] text-black" id="body">
 
     <!-- Navigation Bar -->
     <nav class="bg-[#3B8A9C] text-white">

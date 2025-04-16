@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms and Privacy Policy</title>
   <link href="/FULLSTACK_PROJECT/src/output.css" rel="stylesheet">
+  <script src="script.js"></script>
+
+
   <style>
     @keyframes fade-in {
       0% { opacity: 0; }
@@ -23,6 +26,29 @@
     .animate-slide-up {
       animation: slide-up 0.8s ease-out forwards;
     }
+
+  body {
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  nav.dark-mode, header.dark-mode, footer.dark-mode {
+    background-color: #1e1e1e;
+  }
+
+  /* You can add other elements like this if needed */
+  .card.dark-mode, .box.dark-mode {
+    background-color: #1a1a1a;
+    border-color: #333;
+  }
+
+
   </style>
 </head>
 <body class="bg-[#F0F0F0] px-6 pb-4 animate-fade-in">
@@ -126,5 +152,24 @@
       transform: scaleX(1);
     }
   </style>
+
+<script>
+  // Apply theme on load
+  document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+  });
+
+  function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('theme', currentTheme);
+  }
+</script>
+
+
 </body>
+
+
 </html>

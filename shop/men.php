@@ -15,18 +15,18 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop | FashionHub</title>
+    <title>Men's Collection | FashionHub</title>
     <link rel="stylesheet" href="/FULLSTACK_PROJECT/src/output.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body class="font-sans bg-white text-black" id="body">
+<body class="font-sans bg-gradient-to-r from-[#5a99a8] to-[#F5F7FA] text-black" id="body">
 
     <!-- Navigation Bar -->
     <nav class="bg-[#3B8A9C] text-white">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex space-x-4">
                 <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">HOME</a>
-                <a href="shop.php" class="px-3 py-2 block bg-white text-[#3B8A9C] rounded transition">SHOP</a>
+                <a href="shop.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">SHOP</a>
                 <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">CART</a>
                 <a href="/FULLSTACK_PROJECT/contactus/contact.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">CONTACT</a>
             </div>
@@ -41,8 +41,15 @@ $result = $conn->query($sql);
         </div>
     </nav>
 
+    <!-- Main Section -->
     <section class="max-w-7xl mx-auto py-12 px-4">
-        <h2 class="text-3xl font-bold italic text-center mb-8">MEN'S LATEST COLLECTIONS</h2>
+        <h2 class="text-3xl font-bold italic text-center mb-8 ">MEN'S LATEST COLLECTIONS</h2>
+
+        <!-- <section class="max-w-7xl mx-auto py-12 px-4">
+        <h2 class="text-3xl font-bold italic text-center mb-8">KID'S LATEST COLLECTIONS</h2> -->
+
+
+
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[40px] p-4">
             <?php while ($row = $result->fetch_assoc()): ?>

@@ -16,7 +16,7 @@ $result = $conn->query($sql);
     <title>Top Trending Ads | FashionHub</title>
     <link rel="stylesheet" href="/FULLSTACK_PROJECT/src/output.css">
 </head>
-<body class="bg-gray-100">
+<body class="bg-gradient-to-r from-[#5a99a8] to-[#F5F7FA]">
 
     <nav class="bg-black text-white py-4 px-6">
         <div class="max-w-7xl mx-auto flex justify-between">

@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Page</title>
     <link href="/FULLSTACK_PROJECT/src/output.css" rel="stylesheet"> <!-- Ensure this is correctly compiled using Tailwind CLI -->
+    <script src="script.js"></script>
+
+    <style>
+      body {
+        background-color: white;
+        color: black;
+        transition: background-color 0.3s, color 0.3s;
+      }
+    
+      body.dark-mode {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+    
+      nav.dark-mode, header.dark-mode, footer.dark-mode {
+        background-color: #1e1e1e;
+      }
+    
+      /* You can add other elements like this if needed */
+      .card.dark-mode, .box.dark-mode {
+        background-color: #1a1a1a;
+        border-color: #333;
+      }
+    </style>
+    
 </head>
 <body class="bg-[#3B8A9C] px-6 pb-4">
   <div class="absolute inset-0 bg-[url('../images/signup.jpg')] bg-cover bg-center opacity-75 fixed"></div>
@@ -103,5 +128,22 @@
       </form>
     </div>
   </div>
+
+  <script>
+    // Apply theme on load
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    });
+  
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+      localStorage.setItem('theme', currentTheme);
+    }
+  </script>
+  
+
 </body>
 </html>

@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         </style>
     </head>
-    <body class="bg-white flex items-center justify-center min-h-screen">
+    <body class="bg-gradient-to-r from-gray-600 to-gray-300 flex items-center justify-center min-h-screen">
 
         <div id="thanksCard" class="bg-[#3B8A9C] p-10 rounded-2xl shadow-lg text-center max-w-xl text-white fade-in scale-95">
             <h2 class="text-3xl font-bold mb-4">Thank you, <?php echo $name; ?>!</h2>
