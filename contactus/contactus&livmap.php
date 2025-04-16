@@ -1,17 +1,10 @@
-<?php 
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact Us | FashionHub</title>
-    <link rel="stylesheet" href="/FULLSTACK_PROJECT/src/output.css">
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
-          crossorigin=""/>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="../src/output.css">
+
     <style>
         .fade-in {
             opacity: 0;
@@ -23,44 +16,36 @@ session_start();
             transform: translateY(0);
         }
         
-        /* This is needed for the map to display - can't be replaced with Tailwind classes */
-        #map {
-            height: 300px;
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 1000px;
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+        @media (min-width: 768px) {
+            .contact-container {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+        
+        .map-container {
             width: 100%;
-            border-radius: 0.5rem;
+            height: 450px;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="bg-white relative min-h-screen">
-    <!-- Background Image -->
-    <div class="absolute inset-0 bg-[url('/FULLSTACK_PROJECT/images/contactus.png')] bg-cover bg-center opacity-75 z-0"></div>
+<body class="bg-[#3B8A9C] flex items-center justify-center min-h-screen py-12">
+    <div class="absolute inset-0 bg-[url('../images/contactus.png')] bg-cover bg-center opacity-75"></div>
 
-    <!-- Navigation Bar -->
-    <nav class="w-full bg-[#3B8A9C] flex items-center justify-between h-20 px-3 md:px-20 border-b-2 shadow-md top-0 left-0 right-0 z-10 relative">
-        <!-- Left Side: Logo & Name -->
-        <div class="flex items-center gap-3">
-            <img src="../images/fashionStore.jpg" alt="logo" class="w-20 h-20 rounded-4xl">
-            <h2 class="font-serif text-3xl md:text-5xl">Fashion Store</h2>
-        </div>
-
-        <!-- Right Side: Sign Up Button -->
-        <div class="flex gap-4 md:gap-6 justify-center mt-2">
-            <a href="/FULLSTACK_PROJECT/auth/signup.html">
-                <button class="bg-white hover:bg-gray-400 hover:text-white text-[#3B8A9C] font-serif border-2 rounded-2xl h-10 px-4 md:h-12 md:px-5 hover:cursor-pointer">
-                    Log In
-                </button>
-            </a>
-            <a href="/FULLSTACK_PROJECT/homepage/homepage1.php">
-                <button class="bg-white hover:bg-gray-400 hover:text-white text-[#3B8A9C] font-serif border-2 rounded-2xl h-10 px-4 md:h-12 md:px-5 hover:cursor-pointer">
-                    Home
-                </button>
-            </a>
-        </div>
-    </nav>
-
-    <!-- Contact Form Section -->
-    <div class="flex items-center justify-center py-12 relative z-10">
-        <div id="formCard" class="bg-white p-10 rounded-2xl shadow-xl w-full max-w-md fade-in scale-95">
+    <div class="contact-container relative z-10">
+        <div id="formCard" class="bg-white p-8 rounded-2xl shadow-xl w-full fade-in scale-95">
             <h2 class="text-3xl font-bold mb-6 text-[#3B8A9C] text-center animate-bounce">Contact Us</h2>
             <form action="submit_contact.php" method="POST" class="space-y-5">
                 <input type="text" name="name" placeholder="Your Name" required 
@@ -85,72 +70,106 @@ session_start();
                         class="w-full bg-[#3B8A9C] text-white py-3 rounded-lg hover:bg-[#337685] transition-all duration-300 transform hover:scale-105">Send Message</button>
             </form>
         </div>
+
+        <div id="mapCard" class="bg-white p-8 rounded-2xl shadow-xl w-full fade-in scale-95">
+            <h2 class="text-2xl font-bold mb-4 text-[#3B8A9C]">Visit Our Location</h2>
+            <div class="flex flex-col space-y-2 mb-4">
+                <p class="flex items-center text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[#3B8A9C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    123 Model Town, Jalandhar, Punjab, India
+                </p>
+                <p class="flex items-center text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[#3B8A9C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    +91 98765 43210
+                </p>
+                <p class="flex items-center text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[#3B8A9C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    contact@fashionstore.com
+                </p>
+            </div>
+            <div class="map-container" id="map"></div>
+        </div>
     </div>
 
-    <!-- Contact Info Section with Map -->
-    <section class="max-w-4xl mx-auto pb-12 bg-white p-8 rounded-lg shadow-md relative z-10">
-        <div class="flex flex-col md:flex-row gap-5">
-            <div class="w-full md:w-2/5">
-                <p class="text-gray-700 mb-4">📍 Address: 123 Fashion Street, Mumbai, MH 400001</p>
-                <p class="text-gray-700 mb-4">📞 Phone: +91 98765 43210</p>
-                <p class="text-gray-700 mb-4">✉️ Email: support@fashionstore.com</p>
-                <p class="text-gray-700">⏰ Working Hours: Mon - Fri (10AM - 6PM)</p>
-            </div>
-            
-            <div class="w-full md:w-3/5 h-[300px] rounded-lg overflow-hidden">
-                <div id="map" class="w-full h-full"></div>
-            </div>
-        </div>
-    </section>
-
     <script>
-        // Wait for the DOM to fully load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Fade-in animation
+        // Fade-in animation on page load
+        window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('formCard').classList.add('show');
-            
-            // Initialize the map
-            initMap();
+            document.getElementById('mapCard').classList.add('show');
         });
-        
+
+        // Google Maps integration
         function initMap() {
-            try {
-                // Make sure the map container exists
-                const mapElement = document.getElementById('map');
-                if (!mapElement) {
-                    console.error("Map element not found");
-                    return;
-                }
-                
-                // Initialize map
-                const map = L.map('map').setView([18.9538, 72.8311], 16); // Mumbai coordinates
-                
-                // Add OpenStreetMap tiles
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                }).addTo(map);
-                
-                // Add marker for the store location
-                const marker = L.marker([18.9538, 72.8311]).addTo(map);
-                
-                // Add popup with store info
-                marker.bindPopup("<b>Fashion Store</b><br>123 Fashion Street, Mumbai").openPopup();
-                
-                // Force a map resize after a short delay to handle any rendering issues
-                setTimeout(function() {
-                    map.invalidateSize();
-                }, 100);
-                
-                console.log("Map initialized successfully");
-            } catch (error) {
-                console.error("Error initializing map:", error);
-            }
+            // Coordinates for Jalandhar (centered approximately)
+            const jalandhar = { lat: 31.326, lng: 75.576 };
+            
+            // Create map centered at Jalandhar
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 14,
+                center: jalandhar,
+                mapTypeControl: false,
+                scrollwheel: false,
+                styles: [
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#e9e9e9"
+                            },
+                            {
+                                "lightness": 17
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#f5f5f5"
+                            },
+                            {
+                                "lightness": 20
+                            }
+                        ]
+                    }
+                ]
+            });
+            
+            // Add marker for business location
+            const businessLocation = { lat: 31.3221, lng: 75.5731 }; // Adjust to your exact business location in Jalandhar
+            const marker = new google.maps.Marker({
+                position: businessLocation,
+                map: map,
+                title: "Our Location",
+                animation: google.maps.Animation.DROP
+            });
+            
+            // Add info window
+            const infoWindow = new google.maps.InfoWindow({
+                content: `
+                    <div style="padding: 8px; max-width: 200px;">
+                        <h3 style="margin: 0 0 8px; font-weight: bold; color: #3B8A9C;">Your Business Name</h3>
+                        <p style="margin: 0; font-size: 14px;">123 Model Town, Jalandhar, Punjab, India</p>
+                    </div>
+                `
+            });
+            
+            marker.addListener("click", () => {
+                infoWindow.open(map, marker);
+            });
         }
     </script>
     
-    <!-- Make sure Leaflet JS is loaded -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
-            crossorigin=""></script>
+    <!-- Replace YOUR_API_KEY with your actual Google Maps API key -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCee9gvP4SbXMT0z9FTEaALHlBgIlvXnuE&callback=initMap"></script>
 </body>
 </html>
