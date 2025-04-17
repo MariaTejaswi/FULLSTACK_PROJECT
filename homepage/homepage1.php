@@ -41,7 +41,7 @@ session_start();
     }
   </style>
 </head>
-<body class="h-screen bg-white">
+<body class="h-screen bg-gradient-to-r from-gray-400 to-[#6daab9]">
 
 <!-- Navigation Bar -->
 <nav class="top-0 left-0 w-full bg-transparent shadow-md text-black flex items-center px-6 py-2">
@@ -116,9 +116,9 @@ session_start();
 </nav>
 
 <!-- Heading and Search Bar Section -->
-<div class="flex items-center px-6 py-2">
+<div class="flex px-6 py-2">
   <div class="flex-1"></div>
-  <div class="text-black font-light pl-25 text-4xl absolute left-1/2 -translate-x-1/2" style="font-family: 'Playfair Display', sans-serif;">Fashion Store</div>
+  <div class="text-black font-light  text-4xl absolute " style="font-family: sans-serif;">FASHION <span class="text-[#3B8A9C]">STORE</span></div>
   <div class="flex items-center space-x-2 ml-auto">
     <select class="border border-black rounded px-2 py-1" onchange="navigateCategory(this)">
       <option value="all">All Categories</option>
