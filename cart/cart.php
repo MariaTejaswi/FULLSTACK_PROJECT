@@ -123,6 +123,7 @@ $total_amount = 0;
                 <input type="text" required placeholder="MM/YY" maxlength="5" class="w-1/2 px-4 py-2 border placeholder-gray-400  rounded">
                 <input type="text" required placeholder="CVV" maxlength="3" class="w-1/2 px-4 py-2 border placeholder-gray-400 rounded">
             </div>
+            <input type="text" required placeholder="Address" maxlength="16" class="w-full px-4 py-2 border placeholder-gray-400 rounded">
             <button type="submit" class="w-full bg-[#3B8A9C] hover:bg-[#317488] text-white font-bold py-2 rounded transition">Pay ₹<?php echo number_format($total_amount, 2); ?></button>
         </form>
 
