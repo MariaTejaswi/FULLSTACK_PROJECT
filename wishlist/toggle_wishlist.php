@@ -36,7 +36,7 @@ if ($product_id <= 0 || !in_array($action, ['add', 'remove'])) {
 }
 
 if ($action === 'add') {
-    $check_sql = "SELECT * FROM wishlist WHERE user_id = ? AND product_id = ?";
+    $check_sql = "SELECT * FROM u_wishlist WHERE user_id = ? AND product_id = ?";
     $check_stmt = $conn->prepare($check_sql);
     $check_stmt->bind_param("ii", $user_id, $product_id);
     $check_stmt->execute();
@@ -49,7 +49,7 @@ if ($action === 'add') {
             "icon" => "info"
         ]);
     } else {
-        $insert_sql = "INSERT INTO wishlist (user_id, product_id) VALUES (?, ?)";
+        $insert_sql = "INSERT INTO u_wishlist (user_id, product_id) VALUES (?, ?)";
         $insert_stmt = $conn->prepare($insert_sql);
         $insert_stmt->bind_param("ii", $user_id, $product_id);
         if ($insert_stmt->execute()) {
@@ -69,7 +69,7 @@ if ($action === 'add') {
     }
     $check_stmt->close();
 } else {
-    $delete_sql = "DELETE FROM wishlist WHERE user_id = ? AND product_id = ?";
+    $delete_sql = "DELETE FROM u_wishlist WHERE user_id = ? AND product_id = ?";
     $delete_stmt = $conn->prepare($delete_sql);
     $delete_stmt->bind_param("ii", $user_id, $product_id);
     if ($delete_stmt->execute()) {

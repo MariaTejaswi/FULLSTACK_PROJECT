@@ -49,6 +49,7 @@ $result = $conn->query($sql);
                 <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">HOME</a>
                 <a href="shop.php" class="px-3 py-2 block bg-white text-[#3B8A9C] rounded transition">SHOP</a>
                 <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">CART</a>
+                <a href="/FULLSTACK_PROJECT/wishlist/wishlist.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">WISHLIST</a>
                 <a href="/FULLSTACK_PROJECT/contactus/contact.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">CONTACT</a>
             </div>
             <div class="flex items-center space-x-4 ml-auto">
@@ -71,7 +72,7 @@ $result = $conn->query($sql);
                 $is_in_wishlist = false;
                 if (isset($_SESSION['user_id'])) {
                     $user_id = $_SESSION['user_id'];
-                    $check_wishlist_sql = "SELECT * FROM wishlist WHERE user_id = ? AND product_id = ?";
+                    $check_wishlist_sql = "SELECT * FROM u_wishlist WHERE user_id = ? AND product_id = ?";
                     $check_wishlist_stmt = $conn->prepare($check_wishlist_sql);
                     $check_wishlist_stmt->bind_param('ii', $user_id, $row['id']);
                     $check_wishlist_stmt->execute();
@@ -138,7 +139,7 @@ $result = $conn->query($sql);
             const isFilled = buttonElement.classList.contains('filled');
             const action = isFilled ? 'remove' : 'add';
 
-            fetch('/FULLSTACK_PROJECT/cart/toggle_wishlist.php', { // Updated path
+            fetch('/FULLSTACK_PROJECT/wishlist/toggle_wishlist.php', { // Updated path
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: 'product_id=' + encodeURIComponent(productId) + '&action=' + encodeURIComponent(action)
