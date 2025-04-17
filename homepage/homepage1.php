@@ -36,6 +36,7 @@ session_start();
       <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">SHOP</a>
       <?php if (!isset($_SESSION['user_id'])): ?>
       <a href="#" onclick="showLoginAlert()" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
+      <a href="#" onclick="showLoginAlert()" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">WISHLIST</a>
       <script>
           function showLoginAlert() {
               Swal.fire({
@@ -50,11 +51,12 @@ session_start();
       </script>
       <?php else: ?>
           <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
+          <a href="/FULLSTACK_PROJECT/wishlist/wishlist.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">WISHLIST</a>
       <?php endif; ?>
     </div>
 
     <!-- Center: Crown Image -->
-    <img src="../images/crown.png" alt="crown" class="mx-auto w-24 h-auto"/>
+    <img src="../images/crownbg.png" alt="crown" class="mx-auto w-24 h-auto"/>
 
     <!-- Right: Contact and Login/Logout -->
     <div class="flex items-center space-x-4">

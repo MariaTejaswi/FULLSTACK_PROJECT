@@ -20,7 +20,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-$sql = "SELECT w.id, p.name, p.price 
+$sql = "SELECT w.id AS wishlist_id, w.product_id, p.name, p.price 
         FROM u_wishlist w 
         JOIN products p ON w.product_id = p.id 
         WHERE w.user_id = $user_id";
@@ -58,7 +58,7 @@ $result = $conn->query($sql);
                                 <p class="text-sm">₹<?php echo number_format($row['price'], 2); ?></p>
                             </div>
                             <div class="text-right">
-                                <button onclick="removeFromWishlist(<?php echo $row['id']; ?>)" class="text-red-600 hover:text-red-800 text-sm">✖ Remove</button>
+                            <button onclick="removeFromWishlist(<?php echo $row['product_id']; ?>)" class="text-red-500 hover:text-red-700">Remove</button>
                             </div>
                         </div>
                     <?php endwhile; ?>
@@ -73,42 +73,42 @@ $result = $conn->query($sql);
     </section>
 
     <script>
-    function removeFromWishlist(wishlistId) {
-        fetch('/FULLSTACK_PROJECT/wishlist/remove_from_wishlist.php', {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: "wishlist_id=" + encodeURIComponent(wishlistId)
-        })
-        .then(response => response.json())
-        .then(data => {
-            Swal.fire({
-                title: data.status,
-                text: data.message,
-                icon: data.icon,
-                confirmButtonColor: "#3B8A9C"
-            }).then(() => {
-                location.reload();
-            });
-        })
-        .catch(error => {
-            console.error("Fetch Error:", error);
-            Swal.fire({
-                title: "Error",
-                text: "Failed to connect to the server!",
-                icon: "error",
-                confirmButtonColor: "#3B8A9C"
-            });
-        });
-    }
+function removeFromWishlist(productId) {
+    fetch('/FULLSTACK_PROJECT/wishlist/remove_from_wishlist.php', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "product_id=" + encodeURIComponent(productId)
+    })
+    .then(response => response.json())
+    .then(data => {
+        Swal.fire({
+            title: data.status,
+            text: data.message,
+            icon: data.icon,
+            confirmButtonColor: "#3B8A9C"
+        }).then(() => {
+            // Save the removed product ID to localStorage for syncing with shop page
+            let removed = JSON.parse(localStorage.getItem("removedWishlist")) || [];
+            removed.push(productId);
+            localStorage.setItem("removedWishlist", JSON.stringify(removed));
 
-    gsap.from(".animate-fadein", {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: "power3.out",
-        stagger: 0.2
+            // Reload to update wishlist page
+            location.reload();
+        });
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        Swal.fire({
+            title: "Error",
+            text: "Failed to remove product from wishlist.",
+            icon: "error",
+            confirmButtonColor: "#3B8A9C"
+        });
     });
-    </script>
+}
+</script>
 
 </body>
 </html>

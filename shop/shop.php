@@ -173,6 +173,24 @@ $result = $conn->query($sql);
             });
         }
     </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let removedItems = JSON.parse(localStorage.getItem("removedWishlist")) || [];
+
+        removedItems.forEach(productId => {
+            let btn = document.querySelector(`button[data-product-id="${productId}"]`);
+            if (btn) {
+                btn.classList.remove("filled"); // Remove red heart
+            }
+        });
+
+        // Clear the localStorage key after updating
+        if (removedItems.length > 0) {
+            localStorage.removeItem("removedWishlist");
+        }
+    });
+</script>
+
 
 </body>
 </html>
