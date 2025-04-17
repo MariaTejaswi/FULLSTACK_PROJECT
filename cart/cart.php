@@ -39,7 +39,7 @@ $total_amount = 0;
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body class="bg-white text-[#3B8A9C] font-sans">
+<body class="bg-gradient-to-r from-[#5a99a8] to-[#F5F7FA] text-[#3B8A9C] font-sans">
 
     <nav class="bg-[#3B8A9C] text-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between">

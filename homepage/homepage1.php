@@ -20,8 +20,25 @@ session_start();
       from { opacity: 0.4; }
       to { opacity: 1; }
     }
-
-
+    /* Blinking cursor for autotyper */
+    #auto-type-text::after {
+      content: "|";
+      animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    /* Pulse animation for button */
+    button:hover {
+      animation: pulse 0.5s;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
   </style>
 </head>
 <body class="h-screen bg-white">
@@ -30,11 +47,35 @@ session_start();
 <nav class="top-0 left-0 w-full bg-transparent shadow-md text-black flex items-center px-6 py-2">
   <img src="../images/fashionStore.jpg" alt="logo" class="w-20 mr-5 h-auto rounded-xl" />
   <div class="w-full flex items-center justify-between">
+  
     <!-- Left: Menu Links -->
-    <div class="flex space-x-6">
+<div class="flex space-x-6">
+  <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-home mr-1 align-middle"></i>HOME</a>
+  <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-store mr-1 align-middle"></i>SHOP</a>
+  <?php if (!isset($_SESSION['user_id'])): ?>
+  <a href="#" onclick="showLoginAlert('cart')" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-shopping-cart mr-1 align-middle"></i>CART</a>
+  <a href="#" onclick="showLoginAlert('wishlist')" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-heart mr-1 align-middle"></i>WISHLIST</a>
+  <script>
+          function showLoginAlert() {
+              Swal.fire({
+                  title: 'Login Required',
+                  text: 'Please log in to view your cart.',
+                  icon: 'warning',
+                  confirmButtonColor: '#3B8A9C'
+              }).then(() => {
+                  window.location.href = '/FULLSTACK_PROJECT/auth/login.html';
+              });
+          }
+      </script>
+  <?php else: ?>
+  <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-shopping-cart mr-1 align-middle"></i>CART</a>
+  <a href="/FULLSTACK_PROJECT/wishlist/wishlist.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-heart mr-1 align-middle"></i>WISHLIST</a>
+  <?php endif; ?>
+</div>
+    <!-- <div class="flex space-x-6">
       <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">HOME</a>
       <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">SHOP</a>
-      <?php if (!isset($_SESSION['user_id'])): ?>
+     
       <a href="#" onclick="showLoginAlert()" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
       <a href="#" onclick="showLoginAlert()" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">WISHLIST</a>
       <script>
@@ -49,18 +90,18 @@ session_start();
               });
           }
       </script>
-      <?php else: ?>
+      
           <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
           <a href="/FULLSTACK_PROJECT/wishlist/wishlist.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">WISHLIST</a>
-      <?php endif; ?>
-    </div>
+   
+    </div> -->
 
     <!-- Center: Crown Image -->
     <img src="../images/crownbg.png" alt="crown" class="mx-auto w-24 h-auto"/>
 
     <!-- Right: Contact and Login/Logout -->
     <div class="flex items-center space-x-4">
-      <a href="/FULLSTACK_PROJECT/contactus/contact.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CONTACT</a>
+      <a href="/FULLSTACK_PROJECT/contactus/contact.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-envelope mr-1 align-middle"></i>CONTACT</a>
       <div class="flex items-center space-x-2">
         <?php if (isset($_SESSION['user_id'])): ?>
           <!-- Debug: Check if $_SESSION['username'] is set correctly in login script -->
@@ -93,16 +134,17 @@ session_start();
 
 <!-- Hero Section -->
 <section class="bg-[#3B8A9C] min-h-[900px] py-24 mt-10">
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center px-4 space-y-8 md:space-y-0">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center space-y-8 md:space-y-0">
     <!-- Text Section -->
     <div class="w-full md:w-1/2 text-center md:text-left">
-      <h2 class="text-4xl text-black md:text-5xl font-bold mt-2">Black Friday</h2>
-      <p class="text-black mt-4">
-        Discover the latest trends this Black Friday! <br class="hidden md:block" />
-        Unbeatable deals on stylish clothing for the whole family.
+      <!-- <h2 class="text-4xl text-black md:text-5xl font-bold mt-2">Black Friday</h2> -->
+      <h1 id="auto-type-text" class="text-3xl md:text-5xl font-semibold text-center text-white"></h1>
+      <p class="text-white mt-4">
+        Dive into the Hottest Black Friday Fashion Frenzy! <br class="hidden md:block" />
+        Irresistible Deals on Trendsetting Looks for Everyone.
       </p>
       <a href="/FULLSTACK_PROJECT/shop/shop.php">
-      <button class="bg-white text-[#3B8A9C] font-bold px-6 py-2 mt-6 rounded hover:scale-105">SHOP NOW</button>
+        <button class="bg-white text-[#3B8A9C] font-bold px-6 py-2 mt-6 rounded hover:scale-105">GRAB YOUR FAVES NOW!</button>
       </a>
     </div>
 
@@ -128,7 +170,6 @@ session_start();
 <br><br>
 <!-- 4 Column Section (MEN WOMEN KIDS ACCESSORIES) -->
 <section class="flex flex-col md:flex-row justify-center items-stretch gap-4 px-4 mt-20">
-
   <a href="/FULLSTACK_PROJECT/shop/men.php" class="w-full md:w-1/4">
     <div class="bg-[#3B8A9C] h-full p-6 text-center rounded-lg shadow-md hover:scale-105 transition cursor-pointer">
       <h2 class="text-2xl font-semibold mb-2 text-white">MEN</h2>
@@ -160,7 +201,6 @@ session_start();
       <img src="../images/acc.png" alt="acc" class="mt-4 mx-auto">
     </div>
   </a>
-
 </section>
 
 <br><br>
@@ -199,7 +239,6 @@ session_start();
                     <li><a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="text-gray-400 hover:text-white transition">Home</a></li>
                     <li><a href="/FULLSTACK_PROJECT/shop/shop.php" class="text-gray-400 hover:text-white transition">Shop</a></li>
                     <li><a href="/FULLSTACK_PROJECT/about.php" class="text-gray-400 hover:text-white transition">About Us</a></li>
-                    <!-- <li><a href="/FULLSTACK_PROJECT/blog.php" class="text-gray-400 hover:text-white transition">Blog</a></li> -->
                     <li><a href="/FULLSTACK_PROJECT/contactus/contact.php" class="text-gray-400 hover:text-white transition">Contact</a></li>
                 </ul>
             </div>
@@ -207,10 +246,8 @@ session_start();
             <div>
                 <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
                 <ul class="space-y-3">
-                    <!-- <li><a href="/FULLSTACK_PROJECT/faq.php" class="text-gray-400 hover:text-white transition">FAQs</a></li> -->
-                    <li><a href="/FULLSTACK_PROJECT/auth/terms-and-privacy.php" class="text-gray-400 hover:text-white transition">Shipping Policy</a></li>
-                    <li><a href="/FULLSTACK_PROJECT/auth/terms-and-privacy.php" class="text-gray-400 hover:text-white transition">Returns & Refunds</a></li>
-                    <!-- <li><a href="/FULLSTACK_PROJECT/size-guide.php" class="text-gray-400 hover:text-white transition">Size Guide</a></li> -->
+                    <li><a href="/FULLSTACK_PROJECT/auth/terms-and-privacy.html" class="text-gray-400 hover:text-white transition">Shipping Policy</a></li>
+                    <li><a href="/FULLSTACK_PROJECT/auth/terms-and-privacy.html" class="text-gray-400 hover:text-white transition">Returns & Refunds</a></li>
                     <li><a href="/FULLSTACK_PROJECT/cart/cart.php" class="text-gray-400 hover:text-white transition">Payment Methods</a></li>
                 </ul>
             </div>
@@ -245,28 +282,49 @@ session_start();
     </div>
 </footer>
 
-
-<!-- JavaScript for Image Carousel -->
+<!-- JavaScript for Image Carousel and Autotyper -->
 <script>
-  let index = 0;
+  // Autotyper Effect
+  const text = "Make Style at Fashion Store!";
+  const autoTypeElement = document.getElementById("auto-type-text");
+  let typeIndex = 0;
+
+  function typeEffect() {
+    if (typeIndex < text.length) {
+      autoTypeElement.textContent += text.charAt(typeIndex);
+      typeIndex++;
+      setTimeout(typeEffect, 100); // Typing speed (100ms per character)
+    } else {
+      setTimeout(() => {
+        autoTypeElement.textContent = ""; // Clear text
+        typeIndex = 0; // Reset index
+        typeEffect(); // Restart typing
+      }, 2000); // Pause for 2 seconds before restarting
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", typeEffect);
+
+  // Carousel Effect
+  let slideIndex = 0;
   const slides = document.querySelectorAll(".carousel-image");
 
   function showSlide() {
-    slides.forEach((img, i) => {
+    slides.forEach((img) => {
       img.classList.add("hidden");
     });
-    slides[index].classList.remove("hidden");
-    slides[index].classList.add("fade");
+    slides[slideIndex].classList.remove("hidden");
+    slides[slideIndex].classList.add("fade");
 
-    index = (index + 1) % slides.length;
+    slideIndex = (slideIndex + 1) % slides.length;
   }
 
   setInterval(showSlide, 3000);
 
+  // Category Navigation
   function navigateCategory(select) {
     const value = select.value;
-
-    switch(value) {
+    switch (value) {
       case "mens":
         window.location.href = "/FULLSTACK_PROJECT/shop/men.php";
         break;
@@ -285,7 +343,16 @@ session_start();
     }
   }
 
-
+  function showLoginAlert(type) {
+    Swal.fire({
+        title: 'Login Required',
+        text: `Please log in to view your ${type}.`,
+        icon: 'warning',
+        confirmButtonColor: '#3B8A9C'
+    }).then(() => {
+        window.location.href = '/FULLSTACK_PROJECT/auth/login.html';
+    });
+}
 </script>
 
 </body>

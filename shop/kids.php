@@ -64,7 +64,9 @@ $result = $conn->query($sql);
     </nav>
 
     <section class="max-w-7xl mx-auto py-12 px-4">
-        <h2 class="text-3xl font-bold italic text-center mb-8">KID'S LATEST COLLECTIONS</h2>
+        <!-- <h2 class="text-3xl font-bold italic text-center mb-8">KID'S COLLECTIONS</h2> -->
+      <h2 id="auto-type-text" class="text-3xl md:text-4xl font-semibold italic text-center text-black"></h2><br>
+
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[40px] p-4">
             <?php while ($row = $result->fetch_assoc()): ?>
@@ -91,6 +93,27 @@ $result = $conn->query($sql);
     </section>
 
     <script>
+
+const text = "KIDS COLLECTIONS";
+  const autoTypeElement = document.getElementById("auto-type-text");
+  let typeIndex = 0;
+
+  function typeEffect() {
+    if (typeIndex < text.length) {
+      autoTypeElement.textContent += text.charAt(typeIndex);
+      typeIndex++;
+      setTimeout(typeEffect, 100); // Typing speed (100ms per character)
+    } else {
+      setTimeout(() => {
+        autoTypeElement.textContent = ""; // Clear text
+        typeIndex = 0; // Reset index
+        typeEffect(); // Restart typing
+      }, 2000); // Pause for 2 seconds before restarting
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", typeEffect);
+
         function addToCart(productId) {
             fetch('/FULLSTACK_PROJECT/cart/add_to_cart.php', {
                 method: "POST",
