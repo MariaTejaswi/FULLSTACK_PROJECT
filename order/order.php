@@ -64,7 +64,7 @@ $result = $stmt->get_result();
         <?php endif; ?>
 
         <div class="mt-8 text-center">
-            <a href="/FULLSTACK_PROJECT/index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition">
+            <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition">
                 Back to Home
             </a>
         </div>

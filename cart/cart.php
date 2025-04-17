@@ -189,70 +189,81 @@ function closePaymentModal() {
 function handlePayment(e) {
     e.preventDefault();
 
+    const tabs = {
+        cardTab: 'Card',
+        upiTab: 'UPI',
+        debitTab: 'Debit/Credit'
+    };
+
     let paymentMethod = null;
-let address = "";
+    let address = "N/A";
 
-const cardTab = document.getElementById('cardTab');
-const upiTab = document.getElementById('upiTab');
-const debitTab = document.getElementById('debitTab');
-
-if (!cardTab.classList.contains('hidden')) {
-    paymentMethod = 'Card';
-    address = cardTab.querySelector('input:not([type="text"][placeholder*="Card Number"]):not([type="text"][placeholder*="MM/YY"]):not([type="text"][placeholder*="CVV"])').value || "N/A";
-} else if (!upiTab.classList.contains('hidden')) {
-    paymentMethod = 'UPI';
-    address = upiTab.querySelector('input:not([type="text"][placeholder*="UPI ID"])').value || "N/A";
-} else if (!debitTab.classList.contains('hidden')) {
-    paymentMethod = 'Debit/Credit';
-    address = debitTab.querySelector('input:not([type="text"][placeholder*="Card Number"]):not([type="text"][placeholder*="Expiry Date"]):not([type="text"][placeholder*="CVV"])').value || "N/A";
-}
-
-if (!paymentMethod) {
-    Swal.fire({
-        title: "Select Payment Method",
-        text: "Please select a valid payment method.",
-        icon: "warning",
-        confirmButtonColor: "#3B8A9C"
-    });
-    return;
-}
-
-const totalAmount = <?php echo $total_amount; ?>;
-
-fetch('/FULLSTACK_PROJECT/order/order.php', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        payment_method: paymentMethod, // Explicitly send the determined method
-        total_amount: totalAmount,
-        address: address
-    })
-})
-.then(response => response.json())
-.then(data => {
-    Swal.fire({
-        title: data.status,
-        text: data.message,
-        icon: data.icon,
-        confirmButtonColor: '#3B8A9C'
-    }).then(() => {
-        if (data.icon === 'success') {
-            window.location.href = '/FULLSTACK_PROJECT/shop/shop.php';
+    for (const [tabId, method] of Object.entries(tabs)) {
+        const tab = document.getElementById(tabId);
+        if (!tab.classList.contains('hidden')) {
+            paymentMethod = method;
+            const addressInput = tab.querySelector('input[placeholder="Address"]');
+            if (addressInput) address = addressInput.value || "N/A";
+            break;
         }
+    }
+
+    if (!paymentMethod) {
+        Swal.fire({
+            title: "Select Payment Method",
+            text: "Please select a valid payment method.",
+            icon: "warning",
+            confirmButtonColor: "#3B8A9C"
+        });
+        return;
+    }
+
+    console.log({
+        paymentMethod: paymentMethod,
+        totalAmount: <?php echo $total_amount; ?>,
+        address: address
     });
-})
-.catch(error => {
-    console.error("Fetch Error:", error);
-    Swal.fire({
-        title: "Error",
-        text: "Something went wrong. Please try again.",
-        icon: "error",
-        confirmButtonColor: "#3B8A9C"
-    });
+
+    const formData = new FormData();
+    formData.append('payment_method', paymentMethod);
+    formData.append('total_amount', <?php echo $total_amount; ?>);
+    formData.append('address', address);
+
+    fetch('/FULLSTACK_PROJECT/order/place_order.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        console.log(data);
+        if (data.includes('Order placed successfully')) {
+            Swal.fire({
+    title: "Success",
+    text: "Your order has been placed successfully!",
+    icon: "success",
+    confirmButtonColor: '#3B8A9C'
+}).then(() => {
+    window.location.href = '/FULLSTACK_PROJECT/order/order.php';
 });
+        } else {
+            Swal.fire({
+                title: "Error",
+                text: "Something went wrong. Please try again.",
+                icon: "error",
+                confirmButtonColor: "#3B8A9C"
+            });
+        }
+    })
+    .catch(() => {
+        Swal.fire({
+            title: "Error",
+            text: "Something went wrong. Please try again.",
+            icon: "error",
+            confirmButtonColor: "#3B8A9C"
+        });
+    });
 }
+
 
     function removeFromCart(cartId) {
         fetch('/FULLSTACK_PROJECT/cart/remove_from_cart.php', {
