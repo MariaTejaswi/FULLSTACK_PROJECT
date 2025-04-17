@@ -1,0 +1,10 @@
+[17-Apr-2025 15:31:08 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'status' in 'field list' in C:\xampp\htdocs\FULLSTACK_PROJECT\order\place_order.php:48
+Stack trace:
+#0 C:\xampp\htdocs\FULLSTACK_PROJECT\order\place_order.php(48): mysqli->prepare('INSERT INTO ord...')
+#1 {main}
+  thrown in C:\xampp\htdocs\FULLSTACK_PROJECT\order\place_order.php on line 48
+[17-Apr-2025 15:31:36 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'status' in 'field list' in C:\xampp\htdocs\FULLSTACK_PROJECT\order\place_order.php:48
+Stack trace:
+#0 C:\xampp\htdocs\FULLSTACK_PROJECT\order\place_order.php(48): mysqli->prepare('INSERT INTO ord...')
+#1 {main}
+  thrown in C:\xampp\htdocs\FULLSTACK_PROJECT\order\place_order.php on line 48
