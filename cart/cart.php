@@ -103,7 +103,7 @@ $total_amount = 0;
     <button onclick="openPaymentModal()" class="bg-[#3B8A9C] hover:bg-[#317488] text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition">Proceed to Payment</button>
 </div>
 
-<!-- Payment Modal -->
+<!-- Payment Model -->
 <div id="paymentModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
     <div class="bg-white p-8 rounded-xl w-full max-w-md relative animate-fadein shadow-xl border-2 border-[#3B8A9C]">
         <button onclick="closePaymentModal()" class="absolute top-3 right-4 text-2xl text-red-600 hover:text-red-800">&times;</button>
@@ -123,13 +123,14 @@ $total_amount = 0;
                 <input type="text" required placeholder="MM/YY" maxlength="5" class="w-1/2 px-4 py-2 border placeholder-gray-400  rounded">
                 <input type="text" required placeholder="CVV" maxlength="3" class="w-1/2 px-4 py-2 border placeholder-gray-400 rounded">
             </div>
-            <input type="text" required placeholder="Address" maxlength="16" class="w-full px-4 py-2 border placeholder-gray-400 rounded">
+            <input type="text" required placeholder="Address" maxlength="30" class="w-full px-4 py-2 border placeholder-gray-400 rounded">
             <button type="submit" class="w-full bg-[#3B8A9C] hover:bg-[#317488] text-white font-bold py-2 rounded transition">Pay ₹<?php echo number_format($total_amount, 2); ?></button>
         </form>
 
         <!-- UPI PAYMENT -->
         <form id="upiTab" onsubmit="handlePayment(event)" class="space-y-4 hidden payment-tab">
             <input type="text" required placeholder="Your UPI ID (e.g., xyz@upi)" class="w-full px-4 py-2 border placeholder-gray-400  rounded">
+            <input type="text" required placeholder="Address" maxlength="30" class="w-full px-4 py-2 border placeholder-gray-400 rounded">
             <button type="submit" class="w-full bg-[#3B8A9C] hover:bg-[#317488] text-white font-bold py-2 rounded transition">Pay ₹<?php echo number_format($total_amount, 2); ?> via UPI</button>
         </form>
 
@@ -139,6 +140,7 @@ $total_amount = 0;
             <input type="text" required placeholder="Card Number" maxlength="16" class="w-full px-4 py-2 border placeholder-gray-400 rounded">
             <input type="text" required placeholder="Expiry Date (MM/YY)" maxlength="5" class="w-full px-4 py-2 border placeholder-gray-400  rounded">
             <input type="text" required placeholder="CVV" maxlength="3" class="w-full px-4 py-2 border placeholder-gray-400 rounded">
+            <input type="text" required placeholder="Address" maxlength="30" class="w-full px-4 py-2 border placeholder-gray-400 rounded">
             <button type="submit" class="w-full bg-[#3B8A9C] hover:bg-[#317488] text-white font-bold py-2 rounded transition">Pay ₹<?php echo number_format($total_amount, 2); ?> with Card</button>
         </form>
     </div>
@@ -186,17 +188,71 @@ function closePaymentModal() {
 
 function handlePayment(e) {
     e.preventDefault();
-    Swal.fire({
-        title: 'Payment Successful',
-        text: 'Your order has been placed!',
-        icon: 'success',
-        confirmButtonColor: '#3B8A9C'
-    }).then(() => {
-        closePaymentModal();
-        window.location.href = "/FULLSTACK_PROJECT/shop/shop.php";
-    });
+
+    let paymentMethod = null;
+let address = "";
+
+const cardTab = document.getElementById('cardTab');
+const upiTab = document.getElementById('upiTab');
+const debitTab = document.getElementById('debitTab');
+
+if (!cardTab.classList.contains('hidden')) {
+    paymentMethod = 'Card';
+    address = cardTab.querySelector('input:not([type="text"][placeholder*="Card Number"]):not([type="text"][placeholder*="MM/YY"]):not([type="text"][placeholder*="CVV"])').value || "N/A";
+} else if (!upiTab.classList.contains('hidden')) {
+    paymentMethod = 'UPI';
+    address = upiTab.querySelector('input:not([type="text"][placeholder*="UPI ID"])').value || "N/A";
+} else if (!debitTab.classList.contains('hidden')) {
+    paymentMethod = 'Debit/Credit';
+    address = debitTab.querySelector('input:not([type="text"][placeholder*="Card Number"]):not([type="text"][placeholder*="Expiry Date"]):not([type="text"][placeholder*="CVV"])').value || "N/A";
 }
 
+if (!paymentMethod) {
+    Swal.fire({
+        title: "Select Payment Method",
+        text: "Please select a valid payment method.",
+        icon: "warning",
+        confirmButtonColor: "#3B8A9C"
+    });
+    return;
+}
+
+const totalAmount = <?php echo $total_amount; ?>;
+
+fetch('/FULLSTACK_PROJECT/order/order.php', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        payment_method: paymentMethod, // Explicitly send the determined method
+        total_amount: totalAmount,
+        address: address
+    })
+})
+.then(response => response.json())
+.then(data => {
+    Swal.fire({
+        title: data.status,
+        text: data.message,
+        icon: data.icon,
+        confirmButtonColor: '#3B8A9C'
+    }).then(() => {
+        if (data.icon === 'success') {
+            window.location.href = '/FULLSTACK_PROJECT/shop/shop.php';
+        }
+    });
+})
+.catch(error => {
+    console.error("Fetch Error:", error);
+    Swal.fire({
+        title: "Error",
+        text: "Something went wrong. Please try again.",
+        icon: "error",
+        confirmButtonColor: "#3B8A9C"
+    });
+});
+}
 
     function removeFromCart(cartId) {
         fetch('/FULLSTACK_PROJECT/cart/remove_from_cart.php', {
