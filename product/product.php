@@ -21,6 +21,7 @@ if ($result->num_rows === 0) {
 
 $product = $result->fetch_assoc();
 // Update global product click count
+// Update global product click count
 $update_clicks_sql = "UPDATE products SET clicks = clicks + 1 WHERE id = ?";
 $stmt = $conn->prepare($update_clicks_sql);
 $stmt->bind_param("i", $product_id);
