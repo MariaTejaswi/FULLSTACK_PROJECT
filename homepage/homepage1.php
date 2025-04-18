@@ -55,6 +55,8 @@ session_start();
   <?php if (!isset($_SESSION['user_id'])): ?>
   <a href="#" onclick="showLoginAlert('cart')" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-shopping-cart mr-1 align-middle"></i>CART</a>
   <a href="#" onclick="showLoginAlert('wishlist')" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-heart mr-1 align-middle"></i>WISHLIST</a>
+  <a href="#" onclick="showLoginAlert('orders')" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-box mr-1 align-middle"></i>ORDERS</a>
+
   <script>
           function showLoginAlert() {
               Swal.fire({
@@ -70,31 +72,10 @@ session_start();
   <?php else: ?>
   <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-shopping-cart mr-1 align-middle"></i>CART</a>
   <a href="/FULLSTACK_PROJECT/wishlist/wishlist.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-heart mr-1 align-middle"></i>WISHLIST</a>
+  <a href="/FULLSTACK_PROJECT/order/order.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-box mr-1 align-middle"></i>ORDERS</a>
+
   <?php endif; ?>
 </div>
-    <!-- <div class="flex space-x-6">
-      <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">HOME</a>
-      <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">SHOP</a>
-     
-      <a href="#" onclick="showLoginAlert()" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
-      <a href="#" onclick="showLoginAlert()" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">WISHLIST</a>
-      <script>
-          function showLoginAlert() {
-              Swal.fire({
-                  title: 'Login Required',
-                  text: 'Please log in to view your cart.',
-                  icon: 'warning',
-                  confirmButtonColor: '#3B8A9C'
-              }).then(() => {
-                  window.location.href = '/FULLSTACK_PROJECT/auth/login.html';
-              });
-          }
-      </script>
-      
-          <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">CART</a>
-          <a href="/FULLSTACK_PROJECT/wishlist/wishlist.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded">WISHLIST</a>
-   
-    </div> -->
 
     <!-- Center: Crown Image -->
     <img src="../images/crownbg.png" alt="crown" class="mx-auto w-24 h-auto"/>

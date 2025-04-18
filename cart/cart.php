@@ -40,12 +40,29 @@ $total_amount = 0;
 </head>
 <body class="bg-gradient-to-r from-[#5a99a8] to-[#F5F7FA] text-[#3B8A9C] font-sans">
 
-    <nav class="bg-[#3B8A9C] text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between">
-            <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 hover:bg-white hover:text-[#3B8A9C] transition rounded">HOME</a>
-            <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 bg-white text-[#3B8A9C] font-bold rounded shadow">SHOP</a>
+<nav class="bg-[#3B8A9C] text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Left Side -->
+        <div class="flex space-x-4">
+            <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="flex items-center px-3 py-2 hover:bg-white hover:text-[#3B8A9C] transition rounded">
+                <i class="fas fa-home mr-2"></i> HOME
+            </a>
+            <a href="/FULLSTACK_PROJECT/shop/shop.php" class="flex items-center px-3 py-2 bg-white text-[#3B8A9C] font-bold rounded shadow hover:bg-gray-100 transition">
+                <i class="fas fa-shopping-cart mr-2"></i> SHOP
+            </a>
         </div>
-    </nav>
+        <!-- Right Side -->
+        <div class="flex space-x-4">
+            <a href="/FULLSTACK_PROJECT/wishlist/wishlist.php" class="flex items-center px-3 py-2 bg-white text-[#3B8A9C] font-bold rounded shadow hover:bg-gray-100 transition">
+                <i class="fas fa-heart mr-2"></i> WISHLIST
+            </a>
+            <a href="/FULLSTACK_PROJECT/order/order.php" class="flex items-center px-3 py-2 bg-white text-[#3B8A9C] font-bold rounded shadow hover:bg-gray-100 transition">
+                <i class="fas fa-box mr-2"></i> ORDERS
+            </a>
+        </div>
+    </div>
+</nav>
+<script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
 
     <section class="max-w-7xl mx-auto px-4 py-12">
         <div class="flex flex-col lg:flex-row gap-8">
