@@ -52,8 +52,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>User Profile</title>
     <link href="../src/output.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-
+<body class="bg-gray-100 min-h-screen">
+<!-- Navigation Bar -->
+    <nav class="bg-[#3B8A9C] text-white">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex space-x-4">
+                <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">HOME</a>
+                <a href="shop.php" class="px-3 py-2 block bg-white text-[#3B8A9C] rounded transition">SHOP</a>
+                <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">CART</a>
+                <a href="/FULLSTACK_PROJECT/wishlist/wishlist.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">WISHLIST</a>
+                <a href="/FULLSTACK_PROJECT/contactus/contact.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">CONTACT</a>
+            </div>
+            <div class="flex items-center space-x-4 ml-auto">
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <span class="text-white">Welcome, <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></span>
+                    <a href="/FULLSTACK_PROJECT/homepage/logout.php" class="px-3 py-2 bg-white text-[#3B8A9C] rounded">LOGOUT</a>
+                <?php else: ?>
+                    <a href="/FULLSTACK_PROJECT/auth/login.html" class="px-3 py-2 bg-white text-[#3B8A9C] rounded">LOGIN / SIGN UP</a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </nav>
 <?php if ($updated): ?>
     <script>
         window.onload = function () {
@@ -65,8 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         };
     </script>
 <?php endif; ?>
-
-    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+<div class=" flex items-center justify-center">
+<div class="bg-white p-8 rounded shadow-md w-full max-w-md mt-25">
         <h2 class="text-2xl font-bold mb-6 text-center">Your Profile</h2>
         <form method="POST" enctype="multipart/form-data" class="space-y-4">
             <!-- Profile Image -->
@@ -77,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="text-center">
                 <img src="<?php echo $imagePath; ?>" alt="Profile Image" class="mx-auto rounded-full w-24 h-24 object-cover">
                 <div class="mt-4 flex justify-center">
-    <label class="cursor-pointer bg-purple-100 text-purple-700 px-4 py-2 rounded-full hover:bg-purple-200 text-sm font-medium">
+    <label class="cursor-pointer bg-[#3B8A9C] text-white px-4 py-2 rounded-full hover:bg-purple-200 text-sm font-medium">
         Change profile picture
         <input type="file" name="profile_image" accept="image/*" class="hidden">
     </label>
@@ -112,9 +131,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <div class="text-center">
-                <button type="submit" class="bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700 transition">Update Profile</button>
+                <button type="submit" class="bg-[#3B8A9C] text-white py-2 px-4 rounded transition">Update Profile</button>
             </div>
         </form>
     </div>
+</div>
+    
 </body>
 </html>
