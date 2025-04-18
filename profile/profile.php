@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>User Profile</title>
     <link href="../src/output.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 min-h-screen">
+<body class="bg-gradient-to-r from-gray-400 to-[#6daab9] min-h-screen">
 <!-- Navigation Bar -->
     <nav class="bg-[#3B8A9C] text-white">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
