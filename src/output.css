@@ -478,6 +478,9 @@
   .mt-20 {
     margin-top: calc(var(--spacing) * 20);
   }
+  .mt-25 {
+    margin-top: calc(var(--spacing) * 25);
+  }
   .mt-28 {
     margin-top: calc(var(--spacing) * 28);
   }
@@ -645,6 +648,9 @@
   }
   .h-64 {
     height: calc(var(--spacing) * 64);
+  }
+  .h-90 {
+    height: calc(var(--spacing) * 90);
   }
   .h-\[120\%\] {
     height: 120%;
@@ -1495,6 +1501,12 @@
   }
   .bg-\[\#F0F0F0\] {
     background-color: #F0F0F0;
+  }
+  .bg-\[\#\] {
+    background-color: #;
+  }
+  .bg-\[3B8A9C\] {
+    background-color: 3B8A9C;
   }
   .bg-\[color\:var\(--my-color\)\] {
     background-color: var(--my-color);
