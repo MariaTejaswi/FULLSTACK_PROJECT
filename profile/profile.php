@@ -57,8 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <nav class="bg-[#3B8A9C] text-white">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex space-x-4">
-                <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">HOME</a>
-                <a href="shop.php" class="px-3 py-2 block bg-white text-[#3B8A9C] rounded transition">SHOP</a>
+            <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">HOME</a>
+                <a href="/FULLSTACK_PROJECT/order/order.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">ORDERS</a>
+                <a href="shop.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">SHOP</a>
                 <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">CART</a>
                 <a href="/FULLSTACK_PROJECT/wishlist/wishlist.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">WISHLIST</a>
                 <a href="/FULLSTACK_PROJECT/contactus/contact.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">CONTACT</a>
@@ -136,6 +137,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
     </div>
 </div>
-    
+    <br><br>
 </body>
 </html>
