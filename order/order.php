@@ -32,7 +32,30 @@ $result = $stmt->get_result();
         }
     </style>
 </head>
+
 <body class="bg-gradient-to-r from-[#5a99a8] to-[#F5F7FA] text-[#3B8A9C] font-sans">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-[#3B8A9C] text-white">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex space-x-4">
+                <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">HOME</a>
+                <a href="shop.php" class="px-3 py-2 block bg-white text-[#3B8A9C] rounded transition">SHOP</a>
+                <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">CART</a>
+                <a href="/FULLSTACK_PROJECT/wishlist/wishlist.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">WISHLIST</a>
+                <a href="/FULLSTACK_PROJECT/contactus/contact.php" class="px-3 py-2 block hover:bg-white hover:text-[#3B8A9C] rounded transition">CONTACT</a>
+            </div>
+            <div class="flex items-center space-x-4 ml-auto">
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <span class="text-white">Welcome, <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></span>
+                    <a href="/FULLSTACK_PROJECT/homepage/logout.php" class="px-3 py-2 bg-white text-[#3B8A9C] rounded">LOGOUT</a>
+                <?php else: ?>
+                    <a href="/FULLSTACK_PROJECT/auth/login.html" class="px-3 py-2 bg-white text-[#3B8A9C] rounded">LOGIN / SIGN UP</a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </nav>
+
     <div class="max-w-6xl mx-auto px-4 py-10 fade-in">
         <h1 class="text-4xl font-bold mb-8 text-center text-[#3B8A9C]">My Orders</h1>
 

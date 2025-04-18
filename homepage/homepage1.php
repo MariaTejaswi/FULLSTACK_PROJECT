@@ -47,7 +47,7 @@ session_start();
 <div class="flex items-center justify-between px-6 py-2">
   <!-- Logo on the left -->
   <div>
-    <img src="../images/2bg.svg" alt="logo" class="h-20 rounded-xl" />
+    <img src="../images/logo.svg" alt="logo" class="h-20 rounded-xl" />
   </div>
 
   <!-- Search bar and dropdowns on the right -->
@@ -68,62 +68,56 @@ session_start();
 
 <hr>
 
-<nav class="top-0 left-0 w-full bg-transparent shadow-md text-black flex items-center px-6 py-2">
-  <!-- <img src="../images/1bg.svg" alt="logo" class="w-20 mr-5 h-auto rounded-xl" /> -->
-  <div class="w-full flex items-center justify-between">
-  
+<nav class="relative top-0 left-0 w-full bg-transparent shadow-md text-black px-6 py-2">
+  <div class="flex items-center justify-between w-full">
     <!-- Left: Menu Links -->
-<div class="flex space-x-6">
-  <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-home mr-1 align-middle"></i>HOME</a>
-  <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-store mr-1 align-middle"></i>SHOP</a>
-  <?php if (!isset($_SESSION['user_id'])): ?>
-  <a href="#" onclick="showLoginAlert('cart')" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-shopping-cart mr-1 align-middle"></i>CART</a>
-  <a href="#" onclick="showLoginAlert('wishlist')" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-heart mr-1 align-middle"></i>WISHLIST</a>
-  <a href="#" onclick="showLoginAlert('orders')" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-box mr-1 align-middle"></i>ORDERS</a>
-
-  <script>
+    <div class="flex space-x-6 z-10">
+      <a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-home mr-1"></i>HOME</a>
+      <a href="/FULLSTACK_PROJECT/shop/shop.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-store mr-1"></i>SHOP</a>
+      <?php if (!isset($_SESSION['user_id'])): ?>
+        <a href="#" onclick="showLoginAlert('cart')" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-shopping-cart mr-1"></i>CART</a>
+        <a href="#" onclick="showLoginAlert('wishlist')" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-heart mr-1"></i>WISHLIST</a>
+        <a href="#" onclick="showLoginAlert('orders')" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-box mr-1"></i>ORDERS</a>
+        <script>
           function showLoginAlert() {
-              Swal.fire({
-                  title: 'Login Required',
-                  text: 'Please log in to view your cart.',
-                  icon: 'warning',
-                  confirmButtonColor: '#3B8A9C'
-              }).then(() => {
-                  window.location.href = '/FULLSTACK_PROJECT/auth/login.html';
-              });
+            Swal.fire({
+              title: 'Login Required',
+              text: 'Please log in to view this page.',
+              icon: 'warning',
+              confirmButtonColor: '#3B8A9C'
+            }).then(() => {
+              window.location.href = '/FULLSTACK_PROJECT/auth/login.html';
+            });
           }
-      </script>
-  <?php else: ?>
-  <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-shopping-cart mr-1 align-middle"></i>CART</a>
-  <a href="/FULLSTACK_PROJECT/wishlist/wishlist.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-heart mr-1 align-middle"></i>WISHLIST</a>
-  <a href="/FULLSTACK_PROJECT/order/order.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-box mr-1 align-middle"></i>ORDERS</a>
+        </script>
+      <?php else: ?>
+        <a href="/FULLSTACK_PROJECT/cart/cart.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-shopping-cart mr-1"></i>CART</a>
+        <a href="/FULLSTACK_PROJECT/wishlist/wishlist.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-heart mr-1"></i>WISHLIST</a>
+        <a href="/FULLSTACK_PROJECT/order/order.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-box mr-1"></i>ORDERS</a>
+      <?php endif; ?>
+    </div>
 
-  <?php endif; ?>
-</div>
-<<<<<<< HEAD
-
-=======
->>>>>>> f0b59e11d30dba1fbe3aa0314ec456eb340924fc
-    <!-- Center: Crown Image -->
-<img src="../images/1bg.svg" alt="crown" class="mx-auto w-24 h-auto"/>
-
-    <!-- Right: Contact and Login/Logout -->
-    <div class="flex items-center space-x-4">
-      <a href="/FULLSTACK_PROJECT/contactus/contact.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-envelope mr-1 align-middle"></i>CONTACT</a>
+    <!-- Right: Contact & Auth -->
+    <div class="flex items-center space-x-4 z-10">
+      <a href="/FULLSTACK_PROJECT/contactus/contact.php" class="px-3 py-2 block hover:bg-[#3B8A9C] hover:text-white rounded"><i class="fas fa-envelope mr-1"></i>CONTACT</a>
       <div class="flex items-center space-x-2">
         <?php if (isset($_SESSION['user_id'])): ?>
-          <!-- Debug: Check if $_SESSION['username'] is set correctly in login script -->
-          <span class="text-[#3B8A9C] font-medium max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">Welcome, <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?></span>
+          <a href="../profile/profile.php" class="px-3 py-2 text-white rounded-full border-[#3B8A9C] border-2 hover:bg-[#3B8A9C] transition"><i class="fas fa-user"></i></a>
           <a href="logout.php" class="px-3 py-2 bg-[#3B8A9C] text-white rounded hover:bg-[#337685] whitespace-nowrap">LOGOUT</a>
         <?php else: ?>
           <a href="/FULLSTACK_PROJECT/auth/login.html" class="px-3 py-2 bg-[#3B8A9C] text-white rounded hover:bg-[#337685] whitespace-nowrap">LOGIN/SIGNUP</a>
         <?php endif; ?>
       </div>
     </div>
+
+    <!-- Center: Crown image, absolutely centered -->
+    <div class="absolute left-1/2 transform -translate-x-1/2">
+      <img src="../images/1bg.svg" alt="crown" class="w-24 h-auto" />
+    </div>
   </div>
 </nav>
 
-<!-- Heading and Search Bar Section -->
+<hr>
 
 
 <!-- Hero Section -->
