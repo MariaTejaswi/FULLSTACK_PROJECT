@@ -6,7 +6,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch top 3 products by clicks
-$sql = "SELECT id, name, image, price, clicks FROM products WHERE clicks > 0 ORDER BY clicks DESC LIMIT 3";
+$sql = "SELECT p.id, p.name, p.image, p.price, pc.clicks FROM product_clicks pc JOIN products p ON pc.product_id = p.id WHERE pc.user_id = $user_id AND pc.clicks > 0 ORDER BY pc.clicks DESC LIMIT 3";
 $result = $conn->query($sql);
 $top_products = $result->fetch_all(MYSQLI_ASSOC);
 
