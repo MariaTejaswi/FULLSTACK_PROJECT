@@ -199,7 +199,7 @@ session_start();
     <div class="bg-[#3B8A9C] h-full p-4 md:p-6 text-center rounded-lg shadow-md hover:scale-105 transition cursor-pointer">
       <h2 class="text-xl md:text-2xl font-semibold mb-2 text-white">MEN</h2>
       <p class="text-white text-sm md:text-base">Trendy styles for every man out there. Check out our newest arrivals.</p>
-      <img src="../images/mens.jpg" alt="mens" class="mt-2 md:mt-4 mx-auto h-24 md:h-auto">
+      <img src="../images/mens.jpg" alt="mens" class="mt-2 md:mt-4 mx-auto h-80 mb-5">
     </div>
   </a>
 
@@ -207,23 +207,23 @@ session_start();
     <div class="bg-[#3B8A9C] h-full p-4 md:p-6 text-center rounded-lg shadow-md hover:scale-105 transition cursor-pointer">
       <h2 class="text-xl md:text-2xl font-semibold mb-2 text-white">WOMEN</h2>
       <p class="text-white text-sm md:text-base">Fashion-forward picks to keep you glowing. Discover now.</p>
-      <img src="../images/womens.avif" alt="womens" class="mt-2 md:mt-4 mx-auto h-24 md:h-auto">
+      <img src="../images/womens.avif" alt="womens" class="mt-2 md:mt-4 mx-auto h-80 mb-5">
     </div>
   </a>
 
   <a href="/FULLSTACK_PROJECT/shop/kids.php" class="w-full md:w-1/4">
     <div class="bg-[#3B8A9C] h-full p-4 md:p-6 text-center rounded-lg shadow-md hover:scale-105 transition cursor-pointer">
       <h2 class="text-xl md:text-2xl font-semibold mb-2 text-white">KIDS</h2>
-      <p class="text-white text-sm md:text-base">Adorable, durable, and fun outfits for the little ones.</p>
-      <img src="../images/kids.jpg" alt="kids" class="mt-2 md:mt-4 mx-auto h-24 md:h-auto">
+      <p class="text-white text-sm md:text-base">Adorable, durable, and fun outfits for the little ones.</p><br>
+      <img src="../images/kids.jpg" alt="kids" class="mt-2 md:mt-4 mx-auto h-80 mb-5">
     </div>
   </a>
 
   <a href="/FULLSTACK_PROJECT/shop/accessories.php" class="w-full md:w-1/4">
     <div class="bg-[#3B8A9C] h-full p-4 md:p-6 text-center rounded-lg shadow-md hover:scale-105 transition cursor-pointer">
       <h2 class="text-xl md:text-2xl font-semibold mb-2 text-white">ACCESSORIES</h2>
-      <p class="text-white text-sm md:text-base">Complete your vibe with the latest accessories.</p>
-      <img src="../images/acc.png" alt="acc" class="mt-2 md:mt-4 mx-auto h-24 md:h-auto">
+      <p class="text-white text-sm md:text-base">Complete your vibe with the latest accessories.</p><br>
+      <img src="../images/acc.png" alt="acc" class="mt-2 md:mt-4 mx-auto h-80 mb-5">
     </div>
   </a>
 </section>
