@@ -100,10 +100,7 @@ session_start();
 
   <?php endif; ?>
 </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> f0b59e11d30dba1fbe3aa0314ec456eb340924fc
     <!-- Center: Crown Image -->
 <img src="../images/1bg.svg" alt="crown" class="mx-auto w-24 h-auto"/>
 
