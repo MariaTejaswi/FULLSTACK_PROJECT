@@ -63,13 +63,13 @@
     </style>
 </head>
 <body class="bg-[#3B8A9C] flex items-center justify-center min-h-screen py-12">
-    <div class="absolute inset-0 bg-[url('../images/contactus.png')] bg-cover bg-center opacity-75"></div>
+    <div class="absolute inset-0 bg-[url('../images/contact.png')] bg-cover bg-center opacity-75"></div>
 
     <!-- Navigation Bar -->
-<nav class="w-full bg-[#3B8A9C] h-20 flex justify-between items-center px-6 md:px-20 border-b-2 shadow-md fixed top-0 left-0 right-0 z-10">
-    <div class="flex items-center gap-3 bg-[#3B8A9C]">
-      <img src="../images/fashionStore.jpg" alt="logo" class="w-20 h-20 rounded-4xl">
-      <h2 class="font-serif text-3xl md:text-5xl text-black">Fashion Store</h2>
+<nav class="w-full bg-gradient-to-r from-gray-400 to-[#6daab9] h-20 flex justify-between items-center px-6 md:px-20 border-b-2 shadow-md fixed top-0 left-0 right-0 z-10">
+    <div class="flex items-center gap-3">
+      <img src="../images/logo.svg" alt="logo" class="">
+      <!-- <h2 class="font-serif text-3xl md:text-5xl text-black">Fashion Store</h2> -->
     </div>
     <!-- Back Button -->
     <div class="flex space-x-4 justify-center mt-4">
