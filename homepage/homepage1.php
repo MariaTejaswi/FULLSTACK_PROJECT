@@ -44,8 +44,32 @@ session_start();
 <body class="h-screen bg-gradient-to-r from-gray-400 to-[#6daab9]">
 
 <!-- Navigation Bar -->
+<div class="flex items-center justify-between px-6 py-2">
+  <!-- Logo on the left -->
+  <div>
+    <img src="../images/2bg.svg" alt="logo" class="h-20 rounded-xl" />
+  </div>
+
+  <!-- Search bar and dropdowns on the right -->
+  <div class="flex items-center space-x-2">
+    <select class="border border-black rounded px-2 py-1" onchange="navigateCategory(this)">
+      <option value="all">All Categories</option>
+      <option value="mens">Men's</option>
+      <option value="womens">Women's</option>
+      <option value="kids">Kids</option>
+      <option value="accessories">Accessories</option>
+    </select>
+    <input type="text" placeholder="What do you need?" class="border border-black rounded px-2 py-1 w-40 md:w-60" />
+    <button class="bg-[#3B8A9C] text-white px-4 py-1 rounded">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+</div>
+
+<hr>
+
 <nav class="top-0 left-0 w-full bg-transparent shadow-md text-black flex items-center px-6 py-2">
-  <img src="../images/fashionStore.jpg" alt="logo" class="w-20 mr-5 h-auto rounded-xl" />
+  <!-- <img src="../images/1bg.svg" alt="logo" class="w-20 mr-5 h-auto rounded-xl" /> -->
   <div class="w-full flex items-center justify-between">
   
     <!-- Left: Menu Links -->
@@ -76,9 +100,12 @@ session_start();
 
   <?php endif; ?>
 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f0b59e11d30dba1fbe3aa0314ec456eb340924fc
     <!-- Center: Crown Image -->
-    <img src="../images/crownbg.png" alt="crown" class="mx-auto w-24 h-auto"/>
+<img src="../images/1bg.svg" alt="crown" class="mx-auto w-24 h-auto"/>
 
     <!-- Right: Contact and Login/Logout -->
     <div class="flex items-center space-x-4">
@@ -97,24 +124,10 @@ session_start();
 </nav>
 
 <!-- Heading and Search Bar Section -->
-<div class="flex px-6 py-2">
-  <div class="flex-1"></div>
-  <div class="text-black font-light  text-4xl absolute " style="font-family: sans-serif;">FASHION <span class="text-[#3B8A9C]">STORE</span></div>
-  <div class="flex items-center space-x-2 ml-auto">
-    <select class="border border-black rounded px-2 py-1" onchange="navigateCategory(this)">
-      <option value="all">All Categories</option>
-      <option value="mens">Men's</option>
-      <option value="womens">Women's</option>
-      <option value="kids">Kids</option>
-      <option value="accessories">Accessories</option>
-    </select>
-    <input type="text" placeholder="What do you need?" class="border border-black rounded px-2 py-1 w-40 md:w-60" />
-    <button class="bg-[#3B8A9C] text-white px-4 py-1 rounded"><i class="fas fa-search"></i></button>
-  </div>
-</div>
+
 
 <!-- Hero Section -->
-<section class="bg-[#3B8A9C] min-h-[900px] py-24 mt-10">
+<section class="bg-[#3B8A9C] min-h-[900px] py-24">
 <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center space-y-8 md:space-y-0">
     <!-- Text Section -->
     <div class="w-full md:w-1/2 text-center md:text-left">
