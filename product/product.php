@@ -21,7 +21,6 @@ if ($result->num_rows === 0) {
 
 $product = $result->fetch_assoc();
 // Update global product click count
-// Update global product click count
 $update_clicks_sql = "UPDATE products SET clicks = clicks + 1 WHERE id = ?";
 $stmt = $conn->prepare($update_clicks_sql);
 $stmt->bind_param("i", $product_id);
@@ -58,11 +57,11 @@ if (isset($_SESSION['user_id'])) {
 </head>
 <body class="bg-gray-100 font-sans">
 
-<nav class="w-full bg-[#3B8A9C] flex items-center justify-between h-20 px-3 md:px-20 border-b-2 shadow-md fixed top-0 left-0 right-0 z-10">
+<nav class="w-full bg-gradient-to-r from-gray-400 to-[#6daab9] flex items-center justify-between h-20 px-3 md:px-20 border-b-2 shadow-md fixed top-0 left-0 right-0 z-10">
     <!-- Left Side: Logo & Name -->
-    <div class="flex items-center gap-3 bg-[#3B8A9C]">
-        <img src="../images/fashionStore.jpg" alt="logo" class="w-20 h-20 rounded-4xl">
-        <h2 class="font-serif text-3xl md:text-5xl">Fashion Store</h2>
+    <div class="flex items-center gap-3">
+        <img src="../images/logo.svg" alt="logo">
+        <!-- <h2 class="font-serif text-3xl md:text-5xl">Fashion Store</h2> -->
     </div>
 
     <!-- Right Side: Sign Up Button -->
