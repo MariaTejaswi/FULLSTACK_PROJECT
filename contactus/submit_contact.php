@@ -1,47 +1,54 @@
 <?php
+// Use PHPMailer classes
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Correct path to autoload using relative directory
+require __DIR__ . '/../phpmailer/vendor/autoload.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Sanitize and store form input
     $name    = htmlspecialchars($_POST['name']);
     $email   = htmlspecialchars($_POST['email']);
     $type    = htmlspecialchars($_POST['type']);
     $message = htmlspecialchars($_POST['message']);
-    ?>
 
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Message Received</title>
-        <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-         <link rel="stylesheet" href="/FULLSTACK_PROJECT/src/output.css">
-        <style>
-            .fade-in {
-                opacity: 0;
-                transform: translateY(30px);
-                transition: all 0.7s ease-in-out;
-            }
-            .fade-in.show {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        </style>
-    </head>
-    <body class="bg-gradient-to-r from-gray-600 to-gray-300 flex items-center justify-center min-h-screen">
+    // Send mail using PHPMailer
+    $mail = new PHPMailer(true);
+    try {
+        // Set SMTP server settings
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';  // Gmail SMTP server
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'mariatejaswiimandi@gmail.com'; // Your Gmail address
+        $mail->Password   = 'ihbw txyl ouzo xzip'; // Your 16-character App Password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Use STARTTLS encryption
+        $mail->Port       = 587;  // Port for TLS
 
-        <div id="thanksCard" class="bg-[#3B8A9C] p-10 rounded-2xl shadow-lg text-center max-w-xl text-white fade-in scale-95">
-            <h2 class="text-3xl font-bold mb-4">Thank you, <?php echo $name; ?>!</h2>
-            <p class="mb-2 text-lg">We received your <strong><?php echo $type; ?></strong> query.</p>
-            <p class="mb-2">We’ll get back to you at <strong><?php echo $email; ?></strong>.</p>
-            <p class="italic text-white/80 mt-4">“<?php echo $message; ?>”</p>
-            <a href="contact.php" class="inline-block mt-6 bg-white text-[#3B8A9C] px-5 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300">Go Back</a>
-        </div>
+        // Set the sender and recipient addresses
+        $mail->setFrom($email, $name);
+        $mail->addAddress('mariatejaswiimandi@gmail.com'); // Send email to yourself
 
-        <script>
-            window.addEventListener('DOMContentLoaded', () => {
-                document.getElementById('thanksCard').classList.add('show');
-            });
-        </script>
-    </body>
-    </html>
+        // Set email content
+        $mail->isHTML(true);
+        $mail->Subject = "New Contact Query from $name";
+        $mail->Body    = "
+            <h2>New Message from Fashion Store Contact Page</h2>
+            <p><b>Name:</b> $name</p>
+            <p><b>Email:</b> $email</p>
+            <p><b>Type:</b> $type</p>
+            <p><b>Message:</b><br>$message</p>
+        ";
 
-<?php
+        // Attempt to send the email
+        $mail->send();
+
+        // Redirect to thank you page with encoded parameters
+        header("Location: thank_you.php?name=" . urlencode($name) . "&type=" . urlencode($type) . "&email=" . urlencode($email) . "&message=" . urlencode($message));
+        exit();
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        exit();
+    }
 }
 ?>

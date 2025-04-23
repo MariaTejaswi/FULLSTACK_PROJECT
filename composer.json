@@ -1,0 +1,17 @@
+{
+    "name": "maria/fullstack_project",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Maria\\FullstackProject\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Maria Tejaswi",
+            "email": "mariatejaswiimandi@gmail.com"
+        }
+    ]
+}
