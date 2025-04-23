@@ -3,9 +3,35 @@ include "db.php";
 session_start(); // Start session at the beginning
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = trim($_POST["username"]); // Trim to remove spaces
-    $password = $_POST["password"];
+    // Sanitize and validate input
+    $email = trim(filter_input(INPUT_POST, "username", FILTER_SANITIZE_EMAIL));
+    $password = trim($_POST["password"]);
 
+    // Server-side validation
+    $errors = [];
+
+    if (empty($email)) {
+        $errors[] = "Email is required.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email format.";
+    }
+
+    if (empty($password)) {
+        $errors[] = "Password is required.";
+    } elseif (strlen($password) < 6) {
+        $errors[] = "Password must be at least 6 characters.";
+    }
+
+    if (!empty($errors)) {
+        $errorMessage = implode("\n", $errors);
+        echo "<script>
+                alert('$errorMessage');
+                window.location.href = '/FULLSTACK_PROJECT/auth/login.html';
+              </script>";
+        exit();
+    }
+
+    // Database query
     $sql = "SELECT id, fullname, password FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
 
@@ -26,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_regenerate_id(true);
 
             $_SESSION["user_id"] = $id;
-            $_SESSION["username"] = $fullname; // Store the user's name
+            $_SESSION["username"] = $fullname;
 
             header("Location: /FULLSTACK_PROJECT/homepage/homepage1.php");
             exit();
@@ -44,8 +70,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </script>";
         exit();
     }
-    
+
     $stmt->close();
+} else {
+    // Redirect if accessed directly (not via POST)
+    header("Location: /FULLSTACK_PROJECT/auth/login.html");
+    exit();
 }
+
 $conn->close();
 ?>
