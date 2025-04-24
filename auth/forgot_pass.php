@@ -8,11 +8,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = trim($_POST["new_password"]);
     $confirm_password = trim($_POST["confirm_password"]);
 
-    // Server-side validation
     $errors = [];
 
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "A valid email is required.";
+    }
+
+    if (empty($security_question)) {
+        $errors[] = "Please select your security question.";
     }
 
     if (empty($security_answer)) {
@@ -28,41 +31,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (!empty($errors)) {
-        echo "<script>alert('" . implode("\n", $errors) . "');</script>";
+        echo "<script>alert('" . implode("\\n", $errors) . "'); window.history.back();</script>";
         exit();
     }
 
-    // Check if email exists
-    $sql = "SELECT id, security_answer FROM users WHERE email = ?";
+    // Fetch the user and check email, security question, and answer
+    $sql = "SELECT id, security_question, security_answer FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
-    $stmt->bind_result($id, $hashed_answer);
+    $stmt->bind_result($id, $stored_question, $stored_answer);
 
     if ($stmt->num_rows > 0) {
         $stmt->fetch();
 
-        // Verify the security answer
-        if (password_verify($security_answer, $hashed_answer)) {
-            // Encrypt new password
+        // Exact case-sensitive match for question and answer
+        if ($security_question === $stored_question && $security_answer === $stored_answer) {
             $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
 
-            // Update the password in the database
-            $update_sql = "UPDATE users SET password = ? WHERE email = ?";
+            $update_sql = "UPDATE users SET password = ? WHERE id = ?";
             $update_stmt = $conn->prepare($update_sql);
-            $update_stmt->bind_param("ss", $hashed_password, $email);
+            $update_stmt->bind_param("si", $hashed_password, $id);
 
             if ($update_stmt->execute()) {
-                echo "<script>alert('Password reset successful! You can now login.'); window.location.href='/FULLSTACK_PROJECT/auth/login.html';</script>";
+                echo "<script>
+                        alert('Password reset successful. You can now login.');
+                        window.location.href = '/FULLSTACK_PROJECT/auth/login.html';
+                      </script>";
             } else {
-                echo "<script>alert('Error resetting password. Please try again.');</script>";
+                echo "<script>alert('Failed to update password. Try again later.');</script>";
             }
+
+            $update_stmt->close();
         } else {
-            echo "<script>alert('Incorrect answer to the security question.');</script>";
+            echo "<script>alert('Security question or answer is incorrect.'); window.history.back();</script>";
         }
     } else {
-        echo "<script>alert('Email not found.');</script>";
+        echo "<script>alert('No user found with that email.'); window.history.back();</script>";
     }
 
     $stmt->close();

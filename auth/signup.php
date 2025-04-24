@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $check_stmt->close();
 
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-    $hashed_answer = password_hash($security_answer, PASSWORD_BCRYPT);
+    // $hashed_answer = password_hash($security_answer, PASSWORD_BCRYPT);
 
     $sql = "INSERT INTO users (fullname, email, password, gender, age, security_question, security_answer) 
             VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    $stmt->bind_param("ssssiss", $fullname, $email, $hashed_password, $gender, $age, $security_question, $hashed_answer);
+    $stmt->bind_param("ssssiss", $fullname, $email, $hashed_password, $gender, $age, $security_question, $security_answer);
 
     if ($stmt->execute()) {
         echo "<!DOCTYPE html>
