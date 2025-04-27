@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link href="/FULLSTACK_PROJECT/src/output.css" rel="stylesheet">
+</head>
+<body class="px-6 pb-4 bg-gradient-to-r from-gray-400 to-[#6daab9]">
+    <div class="absolute inset-0 bg-[url('../images/login.png')] bg-center bg-cover"></div>
+
+    <!-- Forgot Password Navigation Bar -->
+    <nav class="w-full bg-gradient-to-r from-gray-400 to-[#6daab9] flex items-center justify-between h-20 px-3 md:px-20 border-b-2 shadow-md fixed top-0 left-0 right-0 z-10">
+        <div class="flex items-center gap-3">
+            <img src="../images/logo.svg" alt="logo" class=""/>
+        </div>
+        <div class="flex gap-4 md:gap-6 justify-center mt-2">
+            <a href="/FULLSTACK_PROJECT/auth/login.html">
+                <button class="bg-white hover:bg-gray-400 hover:text-white text-[#3B8A9C] font-serif border-2 rounded-2xl h-10 px-4 md:h-12 md:px-5 hover:cursor-pointer">
+                    Login
+                </button>
+            </a>
+        </div>
+    </nav>
+
+    <div class="w-full max-w-md mx-auto relative mt-30 md:mt-60">
+        <div class="absolute w-[200%] h-[130%] left-[-50%] top-[-15%] bg-gray-300/50 backdrop-blur-lg rounded-xl shadow-xl z-0"></div>
+        <div class="relative w-full max-w-md mx-auto bg-white/70 backdrop-blur-md rounded-2xl p-6 shadow-lg z-10">
+            <h1 class="text-center text-4xl font-bold font-serif">Forgot Password</h1>
+
+            <form action="/FULLSTACK_PROJECT/auth/forgot_pass.php" method="POST" id="forgotPasswordForm">
+                <div class="mb-4">
+                    <label for="email" class="font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" required
+                        class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring focus:ring-[#3B8A9C]">
+                </div>
+
+                <div class="mb-4">
+                    <label for="security_answer" class="font-medium text-gray-700">Security Question</label>
+                    <select name="security_question" id="security_question" required
+                        class="mt-1 w-full px-4 py-2 border rounded-lg">
+                        <option value="">Select a question</option>
+                        <option value="What is your pet's name?">What is your pet's name?</option>
+                        <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                        <option value="What was your first school?">What was your first school?</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="security_answer" class="font-medium text-gray-700">Answer</label>
+                    <input type="text" name="security_answer" id="security_answer" required
+                        class="mt-1 w-full px-4 py-2 border rounded-lg">
+                </div>
+
+                <div class="mb-4">
+                    <label for="new_password" class="font-medium text-gray-700">New Password</label>
+                    <input type="password" name="new_password" id="new_password" required
+                        class="mt-1 w-full px-4 py-2 border rounded-lg">
+                </div>
+
+                <div class="mb-4">
+                    <label for="confirm_password" class="font-medium text-gray-700">Confirm Password</label>
+                    <input type="password" name="confirm_password" id="confirm_password" required
+                        class="mt-1 w-full px-4 py-2 border rounded-lg">
+                </div>
+
+                <button type="submit" class="w-full mt-5 bg-[#3B8A9C] text-white py-2 rounded-lg hover:bg-[#589ca0eb] transition hover:cursor-pointer">
+                    Reset Password
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -307,7 +307,7 @@ session_start();
     </div>
 </footer>
 
-<!-- JavaScript for Image Carousel and Autotyper -->
+<!-- JavaScript for Image Carousel and Autotyper and Login popup -->
 <script>
   // Autotyper Effect
   const text = "Make Style at Fashion Store!";
@@ -367,7 +367,7 @@ session_start();
         break;
     }
   }
-
+  // Login popup
   function showLoginAlert(type) {
     Swal.fire({
         title: 'Login Required',
