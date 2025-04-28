@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Fetch the user and check email, security question, and answer
+    // Fetch the user and check email, security question, and hashed answer
     $sql = "SELECT id, security_question, security_answer FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
@@ -46,10 +46,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->num_rows > 0) {
         $stmt->fetch();
 
-        // Exact case-sensitive match for question and answer
-        if ($security_question === $stored_question && $security_answer === $stored_answer) {
+        // Check if the security question matches and verify the hashed answer
+        if ($security_question === $stored_question && password_verify($security_answer, $stored_answer)) {
             $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
 
+            // Update the password in the database
             $update_sql = "UPDATE users SET password = ? WHERE id = ?";
             $update_stmt = $conn->prepare($update_sql);
             $update_stmt->bind_param("si", $hashed_password, $id);

@@ -50,6 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
+    // Check if email already exists
     $check_sql = "SELECT id FROM users WHERE email = ?";
     $check_stmt = $conn->prepare($check_sql);
     $check_stmt->bind_param("s", $email);
@@ -65,9 +66,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $check_stmt->close();
 
+    // Hash password and security answer
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-    // $hashed_answer = password_hash($security_answer, PASSWORD_BCRYPT);
+    $hashed_answer = password_hash($security_answer, PASSWORD_BCRYPT);
 
+    // Insert new user with hashed password and answer
     $sql = "INSERT INTO users (fullname, email, password, gender, age, security_question, security_answer) 
             VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
@@ -77,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    $stmt->bind_param("ssssiss", $fullname, $email, $hashed_password, $gender, $age, $security_question, $security_answer);
+    $stmt->bind_param("ssssiss", $fullname, $email, $hashed_password, $gender, $age, $security_question, $hashed_answer);
 
     if ($stmt->execute()) {
         echo "<!DOCTYPE html>
