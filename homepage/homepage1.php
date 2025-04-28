@@ -263,7 +263,6 @@ session_start();
                 <ul class="space-y-2 md:space-y-3">
                     <li><a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="text-gray-400 hover:text-white transition text-sm md:text-base">Home</a></li>
                     <li><a href="/FULLSTACK_PROJECT/shop/shop.php" class="text-gray-400 hover:text-white transition text-sm md:text-base">Shop</a></li>
-                    <li><a href="/FULLSTACK_PROJECT/about.php" class="text-gray-400 hover:text-white transition text-sm md:text-base">About Us</a></li>
                     <li><a href="/FULLSTACK_PROJECT/contactus/contact.php" class="text-gray-400 hover:text-white transition text-sm md:text-base">Contact</a></li>
                 </ul>
             </div>
