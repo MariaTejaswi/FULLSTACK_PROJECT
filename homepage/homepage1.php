@@ -263,6 +263,10 @@ session_start();
                 <ul class="space-y-2 md:space-y-3">
                     <li><a href="/FULLSTACK_PROJECT/homepage/homepage1.php" class="text-gray-400 hover:text-white transition text-sm md:text-base">Home</a></li>
                     <li><a href="/FULLSTACK_PROJECT/shop/shop.php" class="text-gray-400 hover:text-white transition text-sm md:text-base">Shop</a></li>
+<<<<<<< HEAD
+=======
+                    <!-- <li><a href="/FULLSTACK_PROJECT/about.php" class="text-gray-400 hover:text-white transition text-sm md:text-base">About Us</a></li> -->
+>>>>>>> cc7116577536cc25edde3aa990be3d7030e69482
                     <li><a href="/FULLSTACK_PROJECT/contactus/contact.php" class="text-gray-400 hover:text-white transition text-sm md:text-base">Contact</a></li>
                 </ul>
             </div>
@@ -296,7 +300,7 @@ session_start();
         </div>
         
         <div class="border-t border-gray-800 mt-8 md:mt-12 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p class="text-gray-400 text-xs md:text-sm mb-3 md:mb-0">© 2023 ModaVibe. All rights reserved.</p>
+            <p class="text-gray-400 text-xs md:text-sm mb-3 md:mb-0">© 2023 FashionStore. All rights reserved.</p>
             <div class="flex space-x-4 md:space-x-6">
                 <a href="/FULLSTACK_PROJECT/privacy-policy.php" class="text-gray-400 hover:text-white text-xs md:text-sm transition">Privacy Policy</a>
                 <a href="/FULLSTACK_PROJECT/terms-of-service.php" class="text-gray-400 hover:text-white text-xs md:text-sm transition">Terms of Service</a>
@@ -306,7 +310,7 @@ session_start();
     </div>
 </footer>
 
-<!-- JavaScript for Image Carousel and Autotyper -->
+<!-- JavaScript for Image Carousel and Autotyper and Login popup -->
 <script>
   // Autotyper Effect
   const text = "Make Style at Fashion Store!";
@@ -366,7 +370,7 @@ session_start();
         break;
     }
   }
-
+  // Login popup
   function showLoginAlert(type) {
     Swal.fire({
         title: 'Login Required',
